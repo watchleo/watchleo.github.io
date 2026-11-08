@@ -1,14 +1,14 @@
-MZ-RH1 Walkman — LICENSE
+Retro Music Player — LICENSE
 
 Copyright (c) 2026 Finntoh. All rights reserved.
 
-This license governs the use, copying, modification and distribution of MZ-RH1 Walkman and its associated project materials.
+This license governs the use, copying, modification and distribution of Retro Music Player and its associated project materials.
 
 By downloading, installing, accessing or using any part of this project, you agree to the terms outlined below.
 
 1. OWNERSHIP AND COPYRIGHT
 
-MZ-RH1 Walkman is an original creative and software project developed by Finntoh.
+Retro Music Player is an original creative and software project developed by Finntoh.
 
 Unless otherwise indicated in the THIRD-PARTY NOTICES section, all original project materials are the intellectual property of Finntoh.
 
@@ -30,7 +30,7 @@ Third-party components, trademarks and materials remain the property of their re
 
 The following activities are permitted without requesting additional permission from Finntoh:
 
-- Downloading and installing MZ-RH1 Walkman for personal use.
+- Downloading and installing Retro Music Player for personal use.
 - Using the addon in personal Minecraft Bedrock Edition worlds and on privately operated servers.
 - Recording, streaming, photographing or otherwise showcasing the addon in videos, screenshots, livestreams and other content.
 - Publishing reviews, demonstrations, tutorials and other content featuring the addon.
@@ -73,7 +73,7 @@ These restrictions apply to the original project materials regardless of whether
 
 4. PRIVATE MODIFICATIONS
 
-You are permitted to modify your own personal copy of MZ-RH1 Walkman for private, non-commercial use.
+You are permitted to modify your own personal copy of Retro Music Player for private, non-commercial use.
 
 However:
 
@@ -85,7 +85,7 @@ This permission does not grant ownership of the original materials or authorize 
 
 5. WEB IMPORTER AND USER-GENERATED CONTENT
 
-The web importer allows users to convert their own audio into files compatible with MZ-RH1 Walkman.
+The web importer allows users to convert their own audio into files compatible with Retro Music Player.
 
 Users retain responsibility for the audio, music, lyrics and other content they supply.
 
@@ -99,7 +99,7 @@ Permission to use generated files does not grant permission to redistribute the 
 
 6. THIRD-PARTY COMPONENTS
 
-Certain third-party software and technologies may be used by or referenced in MZ-RH1 Walkman.
+Certain third-party software and technologies may be used by or referenced in Retro Music Player.
 
 These components are subject to their respective licenses and copyright notices.
 
@@ -119,7 +119,7 @@ Finntoh reserves the right to pursue remedies available under applicable law in 
 
 8. NO WARRANTY
 
-MZ-RH1 Walkman and its associated materials are provided "AS IS", without warranties or guarantees of any kind, whether express or implied.
+Retro Music Player and its associated materials are provided "AS IS", without warranties or guarantees of any kind, whether express or implied.
 
 This includes, but is not limited to, warranties of merchantability, fitness for a particular purpose, compatibility, reliability and non-infringement.
 
@@ -133,7 +133,7 @@ Nothing in this section excludes liability that cannot legally be excluded under
 
 9. TRADEMARKS AND NON-AFFILIATION
 
-MZ-RH1 Walkman is an unofficial, fan-made project.
+Retro Music Player is an unofficial, fan-made project.
 
 IT IS NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.
 
@@ -161,7 +161,7 @@ Permission granted for a particular use does not automatically extend to other u
 
 11. GENERAL PROVISIONS
 
-This license applies to the original materials of MZ-RH1 Walkman, subject to the rights and licenses of third-party components.
+This license applies to the original materials of Retro Music Player, subject to the rights and licenses of third-party components.
 
 If any provision of this license is found to be unenforceable under applicable law, the remaining provisions shall continue to apply to the extent permitted by law.
 
@@ -172,7 +172,7 @@ This license does not grant any rights beyond those explicitly stated herein.
 
 THIRD-PARTY NOTICES
 
-The following third-party components and technologies are used by or associated with MZ-RH1 Walkman.
+The following third-party components and technologies are used by or associated with Retro Music Player.
 
 Their respective copyright notices and license terms remain applicable.
 
@@ -200,13 +200,13 @@ User-Supplied Content
 
 Songs, audio recordings, lyrics, artwork and other content supplied through the web importer remain the property of their respective owners.
 
-Such content is not covered by the MZ-RH1 Walkman license.
+Such content is not covered by the Retro Music Player license.
 
 Users are responsible for obtaining any necessary permissions for the content they use.
 
 Minecraft Bedrock Edition
 
-MZ-RH1 Walkman uses standard Minecraft Bedrock Edition scripting, resource pack and user interface mechanisms.
+Retro Music Player uses standard Minecraft Bedrock Edition scripting, resource pack and user interface mechanisms.
 
 No Minecraft game assets are claimed as original work by Finntoh.
 
