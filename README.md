@@ -2,7 +2,7 @@
 
 A retro MiniDisc Walkman for Minecraft Bedrock: Winamp-style menus, synced lyrics, speaker mode, and a free web importer for adding your own songs.
 
-**[Open the importer(https://watchleo.github.io)** — everything runs in your browser. Your songs are never uploaded anywhere.
+**[Open the importer](https://watchleo.github.io)** — everything runs in your browser. Your songs are never uploaded anywhere.
 
 ## Which file do I download?
 
