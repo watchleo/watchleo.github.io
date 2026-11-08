@@ -1,6 +1,6 @@
-# MZ-RH1 Walkman
+# Retro Music Player
 
-A retro MiniDisc Walkman for Minecraft Bedrock: Winamp-style menus, synced lyrics, speaker mode, and a free web importer for adding your own songs.
+A retro music player for Minecraft Bedrock, styled like a MiniDisc Walkman: Winamp-style menus, synced lyrics, speaker mode, and a free web importer for adding your own songs.
 
 **[Open the importer](https://watchleo.github.io)** — everything runs in your browser. Your songs are never uploaded anywhere.
 
@@ -8,9 +8,9 @@ A retro MiniDisc Walkman for Minecraft Bedrock: Winamp-style menus, synced lyric
 
 | File | What it is |
 | --- | --- |
-| `MZ-RH1-Walkman-2.1.5.mcaddon` | **The addon.** Walkman, 24 MiniDisc items, menus and sounds. Disc 1 plays the included original song; discs 2–24 are empty until you add songs. Small download (about 0.5 MB). |
-| `MZ-RH1-Walkman-2.1.5-No-Songs.mcaddon` | The addon with **no music at all** (about 0.3 MB). Every disc is empty until you add songs with the importer. |
-| `MZ-RH1_Importer.html` | The importer, as a file you can keep (see "Good to know"). It contains no songs; it builds from the no-songs addon and adds only the songs you give it. Normally you just use the web link above. |
+| `Retro-Music-Player-2.1.5.mcaddon` | **The addon.** The player (an item called the MZ-RH1 Hi-MD Player), 24 MiniDisc items, menus and sounds. Disc 1 plays the included original song; discs 2–24 are empty until you add songs. Small download (about 0.5 MB). |
+| `Retro-Music-Player-2.1.5-No-Songs.mcaddon` | The addon with **no music at all** (about 0.3 MB). Every disc is empty until you add songs with the importer. |
+| `Retro-Music-Player-Importer.html` | The importer, as a file you can keep (see "Good to know"). It contains no songs; it builds from the no-songs addon and adds only the songs you give it. Normally you just use the web link above. |
 
 **Requires Minecraft Bedrock 1.26.40 or newer** (the scripts use `@minecraft/server` 2.9.0).
 
@@ -19,7 +19,7 @@ A retro MiniDisc Walkman for Minecraft Bedrock: Winamp-style menus, synced lyric
 1. Open the importer link above.
 2. Drop in your songs (any file name, any format) and, optionally, `.lrc` lyric files. You can drop a **`.zip`** or a whole **folder** too.
 3. **The last number in a file name picks the disc**: `My Song 7.mp3` goes to disc 7, and `My Song 7.lrc` is its lyrics. Files without a number take the next free disc. You can change disc numbers and titles in the list.
-4. Click **Build my addon** and download `MZ-RH1_Walkman_IMPORT.mcaddon`.
+4. Click **Build my addon** and download `Retro_Music_Player_IMPORT.mcaddon`.
 5. Open it with Minecraft, enable **both** packs (resource pack and behavior pack) on your world, then **fully restart the world**.
 
 ## Good to know
