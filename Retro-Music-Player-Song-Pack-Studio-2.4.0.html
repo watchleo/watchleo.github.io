@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Song Pack Studio | Retro Music Player</title>
+<meta name="description" content="Create custom Minecraft Bedrock song packs for Retro Music Player. Import audio and synchronized lyrics privately in your browser.">
+<meta name="theme-color" content="#111827">
+<style>
+:root{--bg:#f4f6fa;--card:#fff;--fg:#1b2330;--mut:#5d6b80;--acc:#2563eb;--bd:#d6dce6;--ok:#16794a;--err:#b42318}
+@media (prefers-color-scheme:dark){:root{--bg:#10151d;--card:#18202b;--fg:#e8edf5;--mut:#9aa8bd;--acc:#5b8cff;--bd:#2b3646;--ok:#4cc38a;--err:#ff7b72}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:1.5rem;margin:.2em 0}p.sub{color:var(--mut);margin-top:0}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:14px 0}
+#drop{border:2px dashed var(--bd);border-radius:12px;padding:30px 16px;text-align:center;cursor:pointer}
+#drop.over{border-color:var(--acc);background:rgba(37,99,235,.07)}
+button,label.btn{font:inherit;border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:8px;padding:8px 12px;cursor:pointer}
+button.primary{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:600;padding:12px 18px;width:100%}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:8px;align-items:center;padding:8px 0;border-top:1px solid var(--bd);flex-wrap:wrap}
+.row:first-child{border-top:0}.row input.slot{width:4.4em;flex:none;font:inherit;padding:6px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--fg)}
+.row input[type=text]{flex:1;min-width:140px;font:inherit;padding:6px 8px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--fg)}
+.tag{font-size:.8rem;color:var(--mut)}.ok{color:var(--ok)}.err{color:var(--err)}
+.small{padding:4px 8px}#log{white-space:pre-wrap;font-size:.9rem;color:var(--mut)}
+progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
+
+:root{--bg:#0b1020;--card:#151e30;--fg:#eef4ff;--mut:#a0aec4;--acc:#6c83ff;--bd:#334158;--ok:#65d9ad;--err:#ff8c93}html{color-scheme:dark}body{background:radial-gradient(ellipse at 50% -10%,#22335b 0%,#0b1020 52%);min-height:100vh;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}main{max-width:900px;padding:54px 20px 36px}h1{font-size:clamp(2.3rem,7vw,4.3rem);letter-spacing:-.055em;line-height:1.08;margin:10px 0 16px}h2{font-size:1.12rem;margin:0 0 2px;letter-spacing:-.02em}.accent{color:#9badff}.eyebrow{color:#b8c6ff;font-size:.72rem;font-weight:800;letter-spacing:.19em}p.sub{font-size:1.04rem;max-width:680px;line-height:1.7;margin-bottom:28px}.card{border:1px solid #34415b;background:linear-gradient(145deg,rgba(27,39,61,.97),rgba(17,26,44,.98));box-shadow:0 16px 45px #0002;border-radius:18px;padding:24px;margin:20px 0}.section-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}.step{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#273965;color:#bfcaff;font-weight:800;flex-shrink:0}#drop{border:2px dashed #56688c;border-radius:15px;padding:34px 20px;transition:background .15s,border-color .15s;display:flex;flex-direction:column;align-items:center;gap:10px}#drop:hover,#drop:focus-visible{border-color:#a4b5ff;background:#243252;outline:none}#drop .tag{max-width:600px;line-height:1.7}.upload-icon{font-size:2rem;display:grid;place-items:center;width:66px;height:66px;border-radius:18px;background:#334776;color:#d9e2ff}button,label.btn{background:#25344f;border-color:#4a5d7b;color:#f4f7ff;transition:filter .15s,transform .15s}button:hover:not(:disabled),label.btn:hover{filter:brightness(1.2)}button:active:not(:disabled){transform:translateY(1px)}button:focus-visible,label.btn:focus-within{outline:3px solid #a2b4ff;outline-offset:3px}button.primary{background:linear-gradient(110deg,#6178f5,#8b69ed);border:0;padding:15px;font-size:1rem}.toolbar{display:flex;justify-content:flex-end;margin:-4px 0 10px}.row{gap:10px;padding:12px 0}.track-number{color:#a6b8d8;min-width:22px;font-size:.85rem;font-weight:700}.row input[type=text]{min-width:180px}.row .tag{overflow-wrap:anywhere}#log{margin-top:14px;max-height:230px;overflow:auto;line-height:1.7}progress{margin-top:18px;accent-color:#8e9dff}.preview-btn{min-width:80px}.input-note{font-size:.78rem;color:var(--mut)}.row .lyrics-label{width:fit-content}.row input[type=text]{max-width:100%}.drop-note{font-size:.9rem}#cancelBuild{background:#3a3046;border-color:#826081}footer{font-size:.78rem;color:#8394b1;text-align:center;padding:24px 0 0}ol{padding-left:24px}li{margin:10px 0}.tag{line-height:1.55}code{color:#bfcaff}#note:empty{display:none}[hidden]{display:none!important}@media(max-width:540px){main{padding:30px 14px}.card{padding:18px;border-radius:15px}.row input[type=text]{flex-basis:calc(100% - 42px)}.row .tag{flex:1}#drop{padding:25px 12px}}
+</style></head><body><main>
+<div class="eyebrow">RETRO MUSIC PLAYER · COMPANION TOOL</div><h1>Song Pack <span class="accent">Studio</span></h1>
+<p class="sub">Turn your own music into a Minecraft Bedrock song pack. Add audio, match timed lyrics, and export a ready-to-install <code>.mcaddon</code>. Your files stay on your device.</p>
+<div class="card"><b>Needs the Retro Music Player add-on.</b> This tool only builds a <b>songs pack</b> — the music, titles and lyrics. Install the Retro Music Player base add-on first. <span id="cfLink">A public download link will appear here when configured.</span></div>
+
+<div class="card"><div class="section-head"><span class="step">01</span><div><h2>Import your music</h2><p class="tag">Audio files, lyrics, ZIP archives, or folders</p></div></div><div id="drop" role="button" aria-label="Choose audio and lyrics files" tabindex="0">
+<span class="upload-icon" aria-hidden="true">♫</span><b>Drop your songs here</b><br><span class="tag">or tap to choose files (mp3, wav, flac, m4a, ogg … + .lrc).<br>Vorbis OGG files work offline without conversion. Other supported formats use a converter loaded over the internet. Browser codec support varies.<br>Tip: name a lyrics file like its song (<code>My Song.mp3</code> + <code>My Song.lrc</code>) and they pair automatically.</span>
+<input id="file" type="file" accept="audio/*,.ogg,.opus,.flac,.m4a,.wma,.aiff,.zip,.lrc" multiple hidden>
+<input id="folder" type="file" webkitdirectory multiple hidden></div>
+<p style="margin:10px 0 0;text-align:center"><button id="pickFolder" type="button">Choose a folder</button></p>
+<p class="tag err" id="note"></p></div>
+
+<div class="card" id="listCard" hidden><div class="section-head"><span class="step">02</span><div><h2>Review your tracks</h2><p class="tag">Edit display names or attach lyrics before exporting</p></div></div><div class="toolbar"><button id="clearAll" type="button">Clear all tracks</button></div>
+<div id="list"></div>
+<p class="tag" id="count" role="status"></p>
+</div>
+
+<div class="card" id="buildCard" hidden><div class="section-head"><span class="step">03</span><div><h2>Export your pack</h2><p class="tag">Creates a Minecraft-ready .mcaddon file</p></div></div>
+<button class="primary" id="build">Build my songs pack</button>
+<button id="cancelBuild" type="button" hidden style="margin-top:10px;width:100%">Cancel build</button>
+<progress id="prog" value="0" max="1" hidden></progress>
+<div id="log" role="status" aria-live="polite"></div>
+</div>
+
+<div class="card"><h2>Install in Minecraft Bedrock</h2><ol>
+<li>Install the <b>Retro Music Player</b> add-on from CurseForge (once).</li>
+<li>Click <b>Build my songs pack</b> to export your custom songs.</li>
+<li>Open the downloaded <code>.mcaddon</code> with Minecraft.</li>
+<li>On your world, enable the <b>Songs</b> packs <b>and keep the Retro Music Player packs on</b>, then <b>fully restart the world</b>.</li></ol>
+<p class="tag">Every song you add shows up in the add-on's <b>ADD</b> list in the player menu, where you burn it onto a blank MiniDisc. No song is tied to a disc number and up to 1,000 songs can be imported into a songs pack; each MZ-RH1 holds up to 300 loaded tracks.<br>Songs are linked by <b>file name</b>: keep a file's name the same when you rebuild, and discs you already burned keep playing it (you can still change the title shown in game). To change your songs later, build a new songs pack and install it over the old one.<br>Only use music you own or have permission to use.</p></div>
+<script>
+const CF_URL=""; // Set to your verified public base add-on download page before launch
+const ENC_URL="https://cdn.jsdelivr.net/npm/wasm-media-encoders@0.7.0/+esm";
+const MAX_ARCHIVE_BYTES=512*1024*1024;
+const MAX_ZIP_ENTRIES=2000;
+const MAX_SONGS=1000;
+const MAX_AUDIO_BYTES=128*1024*1024;
+const MAX_LRC_CHARS=12000;
+const MAX_WIRE_BYTES=8*1024*1024;
+const MAX_ZIP_OUTPUT_BYTES=1900*1024*1024;
+const MAX_UNCOMPRESSED_BYTES=512*1024*1024;
+const AUDIO_EXT=/\.(mp3|wav|flac|m4a|aac|ogg|opus|wma|aiff?|mp4|webm)$/i;
+const $=id=>document.getElementById(id);
+let songs=[], lrcs=[];
+let building=false, cancelRequested=false, preview=null;
+function stopPreview(){if(preview){preview.audio.pause();URL.revokeObjectURL(preview.url);preview=null;}}
+function setBuilding(on){building=on;$("build").disabled=on;$("pickFolder").disabled=on;$("clearAll").disabled=on;$("cancelBuild").hidden=!on;}
+function titleSafe(v){return String(v||"").replace(/§./g,"").replace(/[\u0000-\u001f\u007f-\u009f\uE000-\uF8FF]/g," ").replace(/\s+/g," ").trim().slice(0,100);}
+function canceled(){if(cancelRequested)throw new Error("Build canceled. No pack was exported.");}
+
+const norm=s=>s.toLowerCase().replace(/[^a-z0-9\u00c0-\uffff]+/g,"");
+const stem=n=>n.replace(/\.[^.]+$/,"");
+const lastNum=n=>{const m=stem(n).match(/(\d+)(?!.*\d)/);return m?parseInt(m[1],10):null;};
+const cleanTitle=n=>stem(n).replace(/^\s*\d{1,3}\s*[-_.)]\s*/,"").replace(/_+/g," ").trim()||stem(n);
+
+/* ---------- file intake ---------- */
+const isLrc=n=>/\.lrc$/i.test(n);
+const isAudio=f=>AUDIO_EXT.test(f.name)||(f.type||"").startsWith("audio/");
+const junk=p=>/(^|\/)(__MACOSX|\.[^/]*)(\/|$)/.test(p);
+async function inflateRaw(u8,maxBytes){
+  if(typeof DecompressionStream==="undefined")throw new Error("ZIP decompression is not supported by this browser");
+  const reader=new Blob([u8]).stream().pipeThrough(new DecompressionStream("deflate-raw")).getReader();
+  const chunks=[];let total=0;
+  try{
+    while(true){const {value,done}=await reader.read();if(done)break;
+      total+=value.byteLength;
+      if(total>maxBytes)throw new Error("ZIP entry exceeds size limit");
+      chunks.push(value);
+    }
+  }finally{reader.cancel().catch(()=>{});}
+  const out=new Uint8Array(total);let off=0;
+  for(const c of chunks){out.set(c,off);off+=c.byteLength;}
+  return out;
+}
+async function readUserZip(file){
+  const buf=new Uint8Array(await file.arrayBuffer()), dv=new DataView(buf.buffer);
+  const min=Math.max(0,buf.length-65557); let e=buf.length-22;
+  while(e>=min&&dv.getUint32(e,true)!==0x06054b50)e--; if(e<min)throw new Error("not a valid zip");
+  const n=dv.getUint16(e+10,true); let p=dv.getUint32(e+16,true); const out=[],skipped=[];
+   if(n>MAX_ZIP_ENTRIES)throw new Error("ZIP contains too many files");
+   let expanded=0;
+  for(let i=0;i<n;i++){
+    if(p+46>buf.length||dv.getUint32(p,true)!==0x02014b50)throw new Error("ZIP central directory is damaged");
+    const flags=dv.getUint16(p+8,true),method=dv.getUint16(p+10,true),csz=dv.getUint32(p+20,true),
+          nl=dv.getUint16(p+28,true),xl=dv.getUint16(p+30,true),cl=dv.getUint16(p+32,true),lo=dv.getUint32(p+42,true);
+    const usize=dv.getUint32(p+24,true), expectedCrc=dv.getUint32(p+16,true);
+     if(p+46+nl+xl+cl>buf.length)throw new Error("ZIP directory is damaged");
+     const path=new TextDecoder().decode(buf.subarray(p+46,p+46+nl)); p+=46+nl+xl+cl;
+    if(path.endsWith("/")||junk(path))continue;
+    const base=path.split("/").pop(); if(!(isLrc(base)||AUDIO_EXT.test(base)))continue;
+    expanded+=usize;
+     if(expanded>MAX_UNCOMPRESSED_BYTES)throw new Error("ZIP expands beyond the safety limit");
+     if(usize>MAX_AUDIO_BYTES){skipped.push(base+" (file over 128 MB)");continue;}
+     if((flags&1)||csz===0xFFFFFFFF||usize===0xFFFFFFFF){skipped.push(base+" (encrypted or too large)");continue;}
+    if(lo+30>buf.length)throw new Error("ZIP entry is damaged");
+     const ds=lo+30+dv.getUint16(lo+26,true)+dv.getUint16(lo+28,true);
+     if(ds+csz>buf.length)throw new Error("ZIP entry is truncated");
+     const comp=buf.subarray(ds,ds+csz);
+    try{
+      const data=method===0?comp.slice():method===8?await inflateRaw(comp,usize):null;
+      if(!data){skipped.push(base+" (unsupported zip method)");continue;}
+      if(data.length!==usize)throw new Error("ZIP entry size mismatch");
+      if(crc32(data)!==expectedCrc)throw new Error("ZIP entry checksum mismatch");
+       out.push(new File([data],base));
+    }catch(err){skipped.push(base+" (couldn't unzip)");}
+  }
+  return {files:out,skipped};
+}
+async function walk(entry){
+  if(entry.isFile) return [await new Promise((res,rej)=>entry.file(res,rej))];
+  const rd=entry.createReader(),all=[];
+  for(;;){ const b=await new Promise((res,rej)=>rd.readEntries(res,rej)); if(!b.length)break; all.push(...b); }
+  return (await Promise.all(all.map(walk))).flat();
+}
+async function addFiles(fl){
+  if(building){$("note").textContent="Finish or cancel the build before adding more files.";return;}
+  const note=$("note"); note.textContent=""; const skipped=[], flat=[];
+  for(const f of fl){
+    if(f.name.startsWith("."))continue;
+    if(/\.zip$/i.test(f.name)){
+      try{ if(f.size>MAX_ARCHIVE_BYTES)throw new Error("ZIP exceeds 512 MB limit"); const r=await readUserZip(f); flat.push(...r.files); skipped.push(...r.skipped);
+           if(!r.files.length)skipped.push(f.name+" (no songs or lyrics inside)"); }
+      catch(err){ skipped.push(f.name+" ("+err.message+")"); }
+    } else flat.push(f);
+  }
+  const fresh=[];
+  for(const f of flat){
+    if(isLrc(f.name)) lrcs.push({file:f,num:lastNum(f.name)});
+    else if(isAudio(f)&&f.size<=MAX_AUDIO_BYTES){
+      const key=norm(stem(f.name));
+      if(songs.some(s=>norm(stem(s.file.name))===key)||fresh.some(s=>norm(stem(s.file.name))===key))
+        skipped.push(f.name+" (duplicate song filename/key)");
+      else fresh.push({file:f,title:cleanTitle(f.name),lrc:null,num:lastNum(f.name)});
+    }
+  }
+  fresh.sort((a,b)=>a.file.name.localeCompare(b.file.name,undefined,{numeric:true}));
+  const space=Math.max(0,MAX_SONGS-songs.length);
+  if(fresh.length>space)skipped.push(`${fresh.length-space} track(s) over the ${MAX_SONGS}-song limit`);
+  songs.push(...fresh.slice(0,space));
+  // pair lyrics: same name -> same name minus leading track number -> same last number
+  const used=new Set(songs.map(s=>s.lrc).filter(Boolean));
+  const pair=(test)=>{ for(const s of songs){ if(s.lrc)continue; const m=lrcs.find(l=>!used.has(l.file)&&test(s,l)); if(m){s.lrc=m.file;used.add(m.file);} } };
+  pair((s,l)=>norm(stem(l.file.name))===norm(stem(s.file.name)));
+  pair((s,l)=>norm(cleanTitle(l.file.name))===norm(cleanTitle(s.file.name)));
+  // Number-only matching is safe only when the number occurs exactly once
+  // on each side; otherwise lyrics can silently attach to the wrong song.
+  pair((s,l)=>s.num!==null && l.num===s.num &&
+    songs.filter(x=>x.num===s.num).length===1 &&
+    lrcs.filter(x=>x.num===s.num).length===1);
+  for(const f of flat)if(isAudio(f)&&f.size>MAX_AUDIO_BYTES)skipped.push(f.name+" (audio over 128 MB)");
+  if(skipped.length) note.textContent="Skipped: "+skipped.join(", ");
+  else if(!fresh.length&&flat.length&&!flat.some(f=>isLrc(f.name))) note.textContent="No audio files found in what you added.";
+  render();
+}
+function render(){
+  $("listCard").hidden=$("buildCard").hidden=!songs.length;
+  const L=$("list"); L.innerHTML="";
+  songs.forEach((s,i)=>{
+    const r=document.createElement("div"); r.className="row";
+    r.innerHTML=`<span class="track-number">${i+1}</span><input type="text" maxlength="100" aria-label="Track ${i+1} display title" title="Title shown in game">
+      <span class="tag ${s.lrc?"ok":""}">${s.lrc?"♪ lyrics: "+esc(s.lrc.name):"no lyrics"}</span>
+      <label class="btn small lyrics-label">Lyrics<input type="file" hidden></label>
+      <button class="small preview-btn" type="button" data-a="preview" title="Preview this song locally">▶ Preview</button>
+      <button class="small" type="button" data-a="rm" title="Remove track" aria-label="Remove track">✕</button>`;
+    const inp=r.querySelector("input[type=text]"); inp.value=s.title; inp.oninput=()=>s.title=inp.value;
+    r.querySelector("input[type=file]").accept=".lrc";
+     r.querySelector("input[type=file]").onchange=e=>{ if(e.target.files[0]){s.lrc=e.target.files[0];render();} };
+    r.onclick=e=>{
+      if(e.target.dataset?.a==="rm"&&!building){stopPreview();songs.splice(i,1);render();}
+      if(e.target.dataset?.a==="preview"){
+        if(preview?.file===s.file){stopPreview();render();return;}
+        stopPreview();const url=URL.createObjectURL(s.file),audio=new Audio(url);
+        preview={file:s.file,url,audio};audio.onended=()=>{stopPreview();render();};
+        audio.play().catch(()=>{$("note").textContent="Preview unavailable: this browser cannot play that format.";stopPreview();});
+        e.target.textContent="■ Stop";
+      }
+    };
+    L.appendChild(r);
+  });
+  $("count").textContent=`${songs.length} song${songs.length===1?"":"s"}.`;
+}
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+$("drop").onclick=()=>{if(!building)$("file").click();};
+$("drop").onkeydown=e=>{if(!building&&(e.key==="Enter"||e.key===" ")){e.preventDefault();$("file").click();}};
+$("clearAll").onclick=()=>{if(building)return;if(!songs.length||confirm("Remove all imported tracks?")){stopPreview();songs=[];lrcs=[];render();$("note").textContent="";}};
+$("file").onchange=e=>{addFiles([...e.target.files]);e.target.value="";};
+$("folder").onchange=e=>{addFiles([...e.target.files]);e.target.value="";};
+$("pickFolder").onclick=()=>{if(!building)$("folder").click();};
+["dragover","dragenter"].forEach(ev=>$("drop").addEventListener(ev,e=>{e.preventDefault();$("drop").classList.add("over");}));
+["dragleave","drop"].forEach(ev=>$("drop").addEventListener(ev,e=>{e.preventDefault();$("drop").classList.remove("over");}));
+$("drop").addEventListener("drop",e=>{
+  const ents=[...(e.dataTransfer.items||[])].map(i=>i.webkitGetAsEntry&&i.webkitGetAsEntry()).filter(Boolean);
+  const fl=[...e.dataTransfer.files];     // read synchronously, before any await
+  (async()=>{ try{ await addFiles(ents.length?(await Promise.all(ents.map(walk))).flat():fl); }catch(err){ $("note").textContent="Couldn't read that: "+err.message; } })();
+});
+
+/* ---------- zip (store only) ---------- */
+const CRC=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0;}return t;})();
+const crc32=b=>{let c=~0;for(let i=0;i<b.length;i++)c=CRC[(c^b[i])&255]^(c>>>8);return(~c)>>>0;};
+function writeZip(files){            // files: Map name->Uint8Array
+  if(files.size>65535)throw new Error("Too many output files for standard ZIP");
+  const total=[...files.values()].reduce((n,v)=>n+v.byteLength,0);
+  if(total>MAX_ZIP_OUTPUT_BYTES)throw new Error("Pack too large for this exporter (1.9 GB max)");
+  const enc=new TextEncoder(), parts=[], cd=[]; let off=0;
+  for(const [name,data] of files){
+    const nb=enc.encode(name), crc=crc32(data), h=new DataView(new ArrayBuffer(30));
+    h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x0800,true);h.setUint32(14,crc,true);
+    h.setUint32(18,data.length,true);h.setUint32(22,data.length,true);h.setUint16(26,nb.length,true);
+    parts.push(new Uint8Array(h.buffer),nb,data);
+    const c=new DataView(new ArrayBuffer(46));
+    c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);c.setUint16(8,0x0800,true);c.setUint32(16,crc,true);
+    c.setUint32(20,data.length,true);c.setUint32(24,data.length,true);c.setUint16(28,nb.length,true);c.setUint32(42,off,true);
+    cd.push(new Uint8Array(c.buffer),nb); off+=30+nb.length+data.length;
+  }
+  const csize=cd.reduce((a,b)=>a+b.length,0), e=new DataView(new ArrayBuffer(22));
+  e.setUint32(0,0x06054b50,true);e.setUint16(8,files.size,true);e.setUint16(10,files.size,true);e.setUint32(12,csize,true);e.setUint32(16,off,true);
+  return new Blob([...parts,...cd,new Uint8Array(e.buffer)],{type:"application/octet-stream"});
+}
+
+/* ---------- audio -> ogg ---------- */
+let encFactory=null;
+async function getEncoder(){ if(!encFactory) encFactory=(await import(ENC_URL)).createOggEncoder; return encFactory(); }
+/** Return duration from standard single-stream Vorbis Ogg pages, if valid.
+ * No browser codec or network needed. This also verifies the page bounds. */
+function vorbisDuration(u8){
+  if(u8.length<58)return null;
+  const dv=new DataView(u8.buffer,u8.byteOffset,u8.byteLength);
+  let off=0, sampleRate=0, serial=null, granule=0n, pages=0;
+  while(off+27<=u8.length){
+    if(dv.getUint32(off,false)!==0x4f676753||u8[off+4]!==0)return null;
+    const count=u8[off+26];
+    if(off+27+count>u8.length)return null;
+    let len=0;for(let i=0;i<count;i++)len+=u8[off+27+i];
+    const dataAt=off+27+count;
+    if(dataAt+len>u8.length)return null;
+    const pageSerial=dv.getUint32(off+14,true);
+    if(serial===null){
+      serial=pageSerial;
+      if(len<30||u8[dataAt]!==1)return null;
+      const tag=String.fromCharCode(...u8.subarray(dataAt+1,dataAt+7));
+      if(tag!=="vorbis")return null;
+      sampleRate=dv.getUint32(dataAt+12,true);
+      if(sampleRate<8000||sampleRate>192000)return null;
+    }
+    if(pageSerial!==serial)return null; // chained/multiplexed Ogg needs transcoding
+    const g=dv.getBigUint64(off+6,true);
+    if(g!==0xffffffffffffffffn && g>granule)granule=g;
+    off=dataAt+len;pages++;
+  }
+  if(!pages||off!==u8.length||granule===0n)return null;
+  const secs=Number(granule)/sampleRate;
+  return Number.isFinite(secs)&&secs>0&&secs<=86400?secs:null;
+}
+async function toOgg(file){
+  canceled();
+  if(file.size>MAX_AUDIO_BYTES)throw new Error("Audio file is over 128 MB");
+  const raw=new Uint8Array(await file.arrayBuffer());
+  // First try a lossless, offline copy of a correctly structured Vorbis OGG.
+  const native=vorbisDuration(raw);
+  if(native!==null)return {data:raw,secs:native,converted:false};
+  const Context=window.AudioContext||window.webkitAudioContext;
+  if(!Context)throw new Error("Audio decoding is unavailable in this browser");
+  const ctx=new Context();let audio;
+  try{audio=await ctx.decodeAudioData(raw.buffer.slice(0));}
+  catch(e){throw new Error("This browser cannot decode the file; try MP3, WAV or Vorbis OGG");}
+  finally{await ctx.close().catch(()=>{});}
+  canceled();
+  const secs=audio.duration;
+  if(!Number.isFinite(secs)||secs<=0||secs>86400)throw new Error("Unsupported or excessively long audio duration");
+  let enc;
+  try{enc=await getEncoder();}
+  catch(e){throw new Error("Cannot load Vorbis encoder; connect to the internet or import Vorbis OGG files");}
+  const ch=Math.min(2,audio.numberOfChannels),sr=audio.sampleRate;
+  enc.configure({channels:ch,sampleRate:sr,vbrQuality:4});
+  const chunks=[],N=audio.length,STEP=1<<15;
+  const data=Array.from({length:ch},(_,c)=>audio.getChannelData(c));
+  for(let i=0;i<N;i+=STEP){
+    canceled();
+    const o=enc.encode(data.map(d=>d.subarray(i,Math.min(N,i+STEP))));
+    if(o.length)chunks.push(o.slice());
+    if((i/STEP)%8===0)await new Promise(r=>setTimeout(r,0));
+  }
+  const t=enc.finalize();if(t.length)chunks.push(t.slice());
+  const len=chunks.reduce((v,c)=>v+c.length,0),out=new Uint8Array(len);
+  let pos=0;for(const c of chunks){out.set(c,pos);pos+=c.length;}
+  if(vorbisDuration(out)===null)throw new Error("Encoder produced an invalid Vorbis OGG");
+  return {data:out,secs,converted:true};
+}
+
+/* ---------- build ---------- */
+async function readText(f){
+  if(f.size>MAX_LRC_CHARS*8)throw new Error("Lyrics file too large");
+  const b=new Uint8Array(await f.arrayBuffer());
+  const encodings=b.length>1&&b[0]===0xfe&&b[1]===0xff
+    ? ["utf-16be","utf-8","utf-16le","windows-1252"]
+    : ["utf-8","utf-16le","utf-16be","windows-1252"];
+  for(const enc of encodings){
+    try{
+      const text=new TextDecoder(enc,{fatal:true}).decode(b)
+        .replace(/^\uFEFF/,"").replace(/\r\n?/g,"\n").trim();
+      if(text.length>MAX_LRC_CHARS)throw new Error("Lyrics exceed 12,000 characters");
+      return text;
+    }catch(e){if(String(e.message).includes("exceed"))throw e;}
+  }
+  throw new Error("Unable to decode lyrics text");
+}
+
+/* Fixed pack ids: installing a newer build replaces the previous songs pack. */
+const SP={bp:"2d376e9c-3146-4796-a61d-9855a0bfd581",bpMod:"c31cefcf-f48b-4510-9098-130b04f372c7",
+          rp:"7f063ba8-4b5c-4acf-88b5-209bf78a3804",rpMod:"5f091815-f221-4f4d-a950-f88833e67ef3"};
+
+/* Behavior-pack script of the songs pack: sends each song's title / length / lyrics
+   to the Retro Music Player add-on as script events (protocol: see songs_link.js there). */
+const SENDER_JS=`import { system, world } from "@minecraft/server";
+import { SONGS } from "./songs_data.js";
+
+const DATA_ID = "mzrh1songs:data";
+const REQ_ID = "mzrh1songs:request";
+const CHUNK = 700;
+let sending = false;
+
+function sendEvent(id, message) {
+  try {
+    system.sendScriptEvent(id, message);
+  } catch {
+    try {
+      world.getDimension("overworld").runCommand("scriptevent " + id + " " + message);
+    } catch {}
+  }
+}
+
+function sendAll() {
+  if (sending) return;
+  sending = true;
+  const rev = String(Math.floor(Math.random() * 1e9));
+  const slots = Object.keys(SONGS);
+  const queue = ["B|" + rev + "|" + slots.length];
+  for (const slot of slots) {
+    const enc = encodeURIComponent(JSON.stringify(SONGS[slot]));
+    const n = Math.max(1, Math.ceil(enc.length / CHUNK));
+    for (let i = 0; i < n; i++) queue.push("D|" + slot + "|" + i + "|" + n + "|" + enc.slice(i * CHUNK, (i + 1) * CHUNK));
+  }
+  queue.push("E|" + rev);
+  const handle = system.runInterval(() => {
+    for (let k = 0; k < 6 && queue.length > 0; k++) sendEvent(DATA_ID, queue.shift());
+    if (queue.length === 0) {
+      system.clearRun(handle);
+      sending = false;
+    }
+  }, 1);
+}
+
+system.afterEvents.scriptEventReceive.subscribe((ev) => {
+  if (ev.id === REQ_ID) sendAll();
+});
+system.runTimeout(sendAll, 60);
+`;
+
+/* Stable song id from the FILE NAME (not the editable title): 1000..8999999.
+   Ids below 1000 are reserved for songs that ship inside the add-on. */
+function songId(name){ let h=0x811c9dc5; const t=norm(stem(name))||name;
+  for(const ch of t){ h^=ch.codePointAt(0); h=Math.imul(h,0x01000193)>>>0; } return 1000+(h%8999000); }
+function assignIds(list){
+  const used=new Set();
+  const unique=[...new Set(list.map(s=>norm(stem(s.file.name))||s.file.name))].sort();
+  const ids=new Map();
+  for(const name of unique){let id=songId(name);while(used.has(id))id=id>=8999999?1000:id+1;used.add(id);ids.set(name,id);}
+  return list.map(s=>ids.get(norm(stem(s.file.name))||s.file.name));
+}
+
+/* Pure function (no DOM, no audio): build the songs pack files.
+   items: [{id,title,secs,data:Uint8Array,lyrics:string|null}]   stamp: Date.now()  ->  Map name->Uint8Array */
+function assembleSongsPack(items,stamp){
+  const enc=new TextEncoder(), files=new Map();
+  // UTC day + two-second slot increases with each normal rebuild, unlike a
+  // content hash which may decrease and get interpreted as an older pack.
+  const day=Math.floor(stamp/86400000);
+  const twoSecondSlot=Math.floor((stamp%86400000)/2000);
+  const ver=[1,day,twoSecondSlot];
+  const BP="Retro Music Player Songs BP/", RP="Retro Music Player Songs RP/", J=o=>enc.encode(JSON.stringify(o,null,2));
+  files.set(BP+"manifest.json",J({format_version:2,
+    header:{name:"Retro Music Player Songs BP",description:"Your songs for Retro Music Player. Needs the Retro Music Player add-on.",uuid:SP.bp,version:ver,min_engine_version:[1,26,40]},
+    metadata:{product_type:"addon"},
+    modules:[{type:"script",language:"javascript",uuid:SP.bpMod,entry:"scripts/main.js",version:ver}],
+    dependencies:[{uuid:SP.rp,version:ver},{module_name:"@minecraft/server",version:"2.9.0"}]}));
+  files.set(RP+"manifest.json",J({format_version:2,
+    header:{name:"Retro Music Player Songs RP",description:"Audio for your Retro Music Player songs.",uuid:SP.rp,version:ver,min_engine_version:[1,26,40]},
+    metadata:{product_type:"addon"},capabilities:["pbr"],
+    modules:[{description:"Retro Music Player songs",type:"resources",uuid:SP.rpMod,version:ver}]}));
+  const defs={}, songs={};
+  for(const it of [...items].sort((a,b)=>a.id-b.id)){
+    if(!Number.isSafeInteger(it.id)||it.id<1000||it.id>8999999)throw new Error("Invalid song ID");
+    if(!(it.data instanceof Uint8Array)||it.data.length>MAX_AUDIO_BYTES)throw new Error("Invalid song audio");
+    files.set(`${RP}sounds/mzrh1songs/song_${it.id}.ogg`,it.data);
+    defs[`mzrh1.usertrack.${it.id}`]={category:"record",sounds:[{name:`sounds/mzrh1songs/song_${it.id}`,stream:true,volume:1.0,is3D:false}]};
+    const o={n:titleSafe(it.title)||`Track ${it.id}`,s:Math.min(86400,Math.max(1,Math.ceil(it.secs)))};
+    if(it.lyrics){if(it.lyrics.length>MAX_LRC_CHARS)throw new Error("Lyrics are too long");o.l=it.lyrics;}
+    songs[it.id]=o;
+  }
+  const wire=Object.values(songs).reduce((n,o)=>n+encodeURIComponent(JSON.stringify(o)).length,0);
+  if(wire>MAX_WIRE_BYTES)throw new Error("Too much song metadata/lyrics; reduce the number of lyric files");
+  files.set(RP+"sounds/sound_definitions.json",J({format_version:"1.20.20",sound_definitions:defs}));
+  files.set(BP+"scripts/songs_data.js",enc.encode("/** Generated by the Retro Music Player web importer. */\nexport const SONGS = "+JSON.stringify(songs,null,2)+";\n"));
+  files.set(BP+"scripts/main.js",enc.encode(SENDER_JS));
+  return files;
+}
+
+if(typeof document!=="undefined"){
+  if(CF_URL){ const a=document.createElement("a"); a.href=CF_URL; a.target="_blank"; a.rel="noopener"; a.textContent="CurseForge"; $("cfLink").replaceWith(a); }
+  $("cancelBuild").onclick=()=>{cancelRequested=true;$("cancelBuild").disabled=true;$("cancelBuild").textContent="Canceling…";};
+  $("build").onclick=async()=>{
+  if(building)return;
+  stopPreview();cancelRequested=false;
+  const log=$("log"),prog=$("prog");setBuilding(true);prog.hidden=false;log.textContent="";
+  try{
+    const use=[...songs], ids=assignIds(use);
+    const items=[], failed=[]; prog.max=use.length; prog.value=0;
+    for(let i=0;i<use.length;i++){
+      canceled();
+      const s=use[i], id=ids[i]; log.textContent+=`${s.title} … `;
+      try{
+        const r=await toOgg(s.file);
+        const lyrics=s.lrc?await readText(s.lrc):null;
+        items.push({id,title:s.title,secs:r.secs,data:r.data,lyrics});
+        log.textContent+=`ok (${Math.floor(r.secs/60)}:${String(Math.round(r.secs)%60).padStart(2,"0")})\n`;
+      }catch(e){ if(cancelRequested)throw e;log.textContent+=`FAILED: ${e.message}\n`; failed.push(s.title); }
+      prog.value=i+1;
+    }
+    canceled();
+    if(failed.length===use.length) throw new Error("No song could be converted.");
+    const blob=writeZip(assembleSongsPack(items,Date.now())), a=document.createElement("a");
+    const downloadUrl=URL.createObjectURL(blob); a.href=downloadUrl; a.download="Retro_Music_Player_SONGS.mcaddon"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(downloadUrl),60000);
+    log.textContent+=`\nDone! Open Retro_Music_Player_SONGS.mcaddon with Minecraft, enable its packs next to the Retro Music Player packs, fully restart your world, then burn your songs from the player menu (ADD).`+(failed.length?`\nSkipped: ${failed.join(", ")}`:"");
+  }catch(e){ log.textContent+="\nERROR: "+e.message; }
+  setBuilding(false);$("cancelBuild").disabled=false;$("cancelBuild").textContent="Cancel build";prog.hidden=true;
+  };
+}
+</script><footer>Song Pack Studio · Retro Music Player 2.4.0 · Local file processing · Only import audio you have permission to use.</footer></main></body></html>
