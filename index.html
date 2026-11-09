@@ -26,7 +26,7 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 <div class="card"><b>Needs the Retro Music Player add-on.</b> This tool only builds a <b>songs pack</b> — the music, titles and lyrics. Download the add-on from <span id="cfLink">CurseForge</span> and install it first.</div>
 
 <div class="card"><div id="drop" tabindex="0">
-<b>Drop songs, .lrc files, a .zip or a whole folder here</b><br><span class="tag">or tap to choose files (mp3, wav, flac, m4a, ogg … + .lrc).<br>Internet is needed once to convert mp3/wav/etc. (Vorbis .ogg files skip that).<br>Tip: end names with a number to pick the disc — <code>Song 5.mp3</code> + <code>Song 5.lrc</code> → disc 5.</span>
+<b>Drop songs, .lrc files, a .zip or a whole folder here</b><br><span class="tag">or tap to choose files (mp3, wav, flac, m4a, ogg … + .lrc).<br>Internet is needed once to convert mp3/wav/etc. (Vorbis .ogg files skip that).<br>Tip: name a lyrics file like its song (<code>My Song.mp3</code> + <code>My Song.lrc</code>) and they pair automatically.</span>
 <input id="file" type="file" multiple hidden>
 <input id="folder" type="file" webkitdirectory multiple hidden></div>
 <p style="margin:10px 0 0;text-align:center"><button id="pickFolder" type="button">Choose a folder</button></p>
@@ -48,12 +48,11 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 <li>Click <b>Build my songs pack</b> and download the file.</li>
 <li>Open the downloaded <code>.mcaddon</code> with Minecraft.</li>
 <li>On your world, enable the <b>Songs</b> packs <b>and keep the Retro Music Player packs on</b>, then <b>fully restart the world</b>.</li></ol>
-<p class="tag">The <b>last number in a file name</b> picks the disc (<code>My Song 7.mp3</code> → #7); files without one take the next free disc. You can change the disc number in the list. Max 24. A song you import replaces that disc's built-in song; discs you don't fill keep the add-on's own song, or stay silent if it has none. To change your songs later, build a new songs pack and install it over the old one.
-Only use music you own or have permission to use.</p></div>
+<p class="tag">Every song you add shows up in the add-on's <b>ADD</b> list in the player menu, where you burn it onto a blank MiniDisc. No song is tied to a disc number and there is no limit on how many you add.<br>Songs are linked by <b>file name</b>: keep a file's name the same when you rebuild, and discs you already burned keep playing it (you can still change the title shown in game). To change your songs later, build a new songs pack and install it over the old one.<br>Only use music you own or have permission to use.</p></div>
 <script>
 const CF_URL="";   // paste your CurseForge page URL here (leave empty until it is live)
 const ENC_URL="https://cdn.jsdelivr.net/npm/wasm-media-encoders@0.7.0/+esm";
-const MAX=24, AUDIO_EXT=/\.(mp3|wav|flac|m4a|aac|ogg|opus|wma|aiff?|mp4|webm)$/i;
+const AUDIO_EXT=/\.(mp3|wav|flac|m4a|aac|ogg|opus|wma|aiff?|mp4|webm)$/i;
 const $=id=>document.getElementById(id);
 let songs=[], lrcs=[];            // songs: {file,title,lrc}
 
@@ -112,18 +111,10 @@ async function addFiles(fl){
   for(const f of flat){
     if(isLrc(f.name)) lrcs.push({file:f,num:lastNum(f.name)});
     else if(isAudio(f)&&!songs.some(s=>s.file.name===f.name&&s.file.size===f.size))
-      fresh.push({file:f,title:cleanTitle(f.name),lrc:null,num:lastNum(f.name),slot:null});
+      fresh.push({file:f,title:cleanTitle(f.name),lrc:null,num:lastNum(f.name)});
   }
   fresh.sort((a,b)=>a.file.name.localeCompare(b.file.name,undefined,{numeric:true}));
-  // disc number: last number in the file name if it's 1..24 and free, otherwise the next free disc
-  const taken=new Set(songs.map(s=>s.slot));
-  for(const s of fresh) if(s.num>=1&&s.num<=MAX&&!taken.has(s.num)){ s.slot=s.num; taken.add(s.num); }
-  for(const s of fresh){
-    if(s.slot===null){ let k=1; while(k<=MAX&&taken.has(k))k++;
-      if(k>MAX){ skipped.push(s.file.name+" (all "+MAX+" discs are used)"); continue; }
-      s.slot=k; taken.add(k); }
-    songs.push(s);
-  }
+  songs.push(...fresh);
   // pair lyrics: same name -> same name minus leading track number -> same last number
   const used=new Set(songs.map(s=>s.lrc).filter(Boolean));
   const pair=(test)=>{ for(const s of songs){ if(s.lrc)continue; const m=lrcs.find(l=>!used.has(l.file)&&test(s,l)); if(m){s.lrc=m.file;used.add(m.file);} } };
@@ -137,25 +128,18 @@ async function addFiles(fl){
 function render(){
   $("listCard").hidden=$("buildCard").hidden=!songs.length;
   const L=$("list"); L.innerHTML="";
-  const sorted=[...songs].sort((a,b)=>a.slot-b.slot);
-  sorted.forEach((s,i)=>{
+  songs.forEach((s,i)=>{
     const r=document.createElement("div"); r.className="row";
-    r.innerHTML=`<input class="slot" type="number" min="1" max="${MAX}" title="Disc number"><input type="text">
+    r.innerHTML=`<input type="text" title="Title shown in game">
       <span class="tag ${s.lrc?"ok":""}">${s.lrc?"♪ lyrics: "+esc(s.lrc.name):"no lyrics"}</span>
       <label class="btn small">lyrics<input type="file" hidden></label>
-      <button class="small" data-a="up">↑</button><button class="small" data-a="dn">↓</button><button class="small" data-a="rm">✕</button>`;
-    const si=r.querySelector("input.slot"); si.value=s.slot;
-    si.onchange=()=>{ const v=parseInt(si.value,10);
-      if(v>=1&&v<=MAX){ const o=songs.find(x=>x!==s&&x.slot===v); if(o)o.slot=s.slot; s.slot=v; } render(); };
+      <button class="small" data-a="rm" title="Remove">✕</button>`;
     const inp=r.querySelector("input[type=text]"); inp.value=s.title; inp.oninput=()=>s.title=inp.value;
     r.querySelector("input[type=file]").onchange=e=>{ if(e.target.files[0]){s.lrc=e.target.files[0];render();} };
-    r.onclick=e=>{ const a=e.target.dataset&&e.target.dataset.a; if(!a)return;
-      const swap=o=>{ if(o){ [o.slot,s.slot]=[s.slot,o.slot]; } };
-      if(a==="rm")songs.splice(songs.indexOf(s),1); else if(a==="up")swap(sorted[i-1]); else if(a==="dn")swap(sorted[i+1]);
-      render(); };
+    r.onclick=e=>{ if(e.target.dataset&&e.target.dataset.a==="rm"){ songs.splice(i,1); render(); } };
     L.appendChild(r);
   });
-  $("count").textContent=`${songs.length} of ${MAX} discs used.`;
+  $("count").textContent=`${songs.length} song${songs.length===1?"":"s"}.`;
 }
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 $("drop").onclick=()=>$("file").click();
@@ -273,8 +257,14 @@ system.afterEvents.scriptEventReceive.subscribe((ev) => {
 system.runTimeout(sendAll, 60);
 `;
 
+/* Stable song id from the FILE NAME (not the editable title): 1000..8999999.
+   Ids below 1000 are reserved for songs that ship inside the add-on. */
+function songId(name){ let h=0x811c9dc5; const t=norm(stem(name))||name;
+  for(const ch of t){ h^=ch.codePointAt(0); h=Math.imul(h,0x01000193)>>>0; } return 1000+(h%8999000); }
+function assignIds(list){ const used=new Set(); return list.map(s=>{ let id=songId(s.file.name); while(used.has(id))id++; used.add(id); return id; }); }
+
 /* Pure function (no DOM, no audio): build the songs pack files.
-   items: [{slot,title,secs,data:Uint8Array,lyrics:string|null}]   stamp: Date.now()  ->  Map name->Uint8Array */
+   items: [{id,title,secs,data:Uint8Array,lyrics:string|null}]   stamp: Date.now()  ->  Map name->Uint8Array */
 function assembleSongsPack(items,stamp){
   const enc=new TextEncoder(), files=new Map();
   const day=Math.floor(stamp/86400000), minute=Math.floor((stamp%86400000)/60000), ver=[1,day,minute];
@@ -289,12 +279,12 @@ function assembleSongsPack(items,stamp){
     metadata:{product_type:"addon"},capabilities:["pbr"],
     modules:[{description:"Retro Music Player songs",type:"resources",uuid:SP.rpMod,version:ver}]}));
   const defs={}, songs={};
-  for(const it of [...items].sort((a,b)=>a.slot-b.slot)){
-    files.set(`${RP}sounds/mzrh1songs/song_${it.slot}.ogg`,it.data);
-    defs[`mzrh1.usertrack.${it.slot}`]={category:"record",sounds:[{name:`sounds/mzrh1songs/song_${it.slot}`,stream:true,volume:1.0,is3D:false}]};
-    const o={n:(it.title||"").trim()||`Track ${it.slot}`,s:Math.round(it.secs)+1};
+  for(const it of [...items].sort((a,b)=>a.id-b.id)){
+    files.set(`${RP}sounds/mzrh1songs/song_${it.id}.ogg`,it.data);
+    defs[`mzrh1.usertrack.${it.id}`]={category:"record",sounds:[{name:`sounds/mzrh1songs/song_${it.id}`,stream:true,volume:1.0,is3D:false}]};
+    const o={n:(it.title||"").trim()||`Track ${it.id}`,s:Math.round(it.secs)+1};
     if(it.lyrics) o.l=it.lyrics;
-    songs[it.slot]=o;
+    songs[it.id]=o;
   }
   files.set(RP+"sounds/sound_definitions.json",J({format_version:"1.20.20",sound_definitions:defs}));
   files.set(BP+"scripts/songs_data.js",enc.encode("/** Generated by the Retro Music Player web importer. */\nexport const SONGS = "+JSON.stringify(songs,null,2)+";\n"));
@@ -307,21 +297,21 @@ if(typeof document!=="undefined"){
   $("build").onclick=async()=>{
   const btn=$("build"), log=$("log"), prog=$("prog"); btn.disabled=true; prog.hidden=false; log.textContent="";
   try{
-    const use=[...songs].sort((a,b)=>a.slot-b.slot);
+    const use=[...songs], ids=assignIds(use);
     const items=[], failed=[]; prog.max=use.length; prog.value=0;
     for(let i=0;i<use.length;i++){
-      const s=use[i], slot=s.slot; log.textContent+=`[${slot}] ${s.title} … `;
+      const s=use[i], id=ids[i]; log.textContent+=`${s.title} … `;
       try{
         const r=await toOgg(s.file);
-        items.push({slot,title:s.title,secs:r.secs,data:r.data,lyrics:s.lrc?await readText(s.lrc):null});
+        items.push({id,title:s.title,secs:r.secs,data:r.data,lyrics:s.lrc?await readText(s.lrc):null});
         log.textContent+=`ok (${Math.floor(r.secs/60)}:${String(Math.round(r.secs)%60).padStart(2,"0")})\n`;
-      }catch(e){ log.textContent+=`FAILED: ${e.message}\n`; failed.push(slot); }
+      }catch(e){ log.textContent+=`FAILED: ${e.message}\n`; failed.push(s.title); }
       prog.value=i+1;
     }
     if(failed.length===use.length) throw new Error("No song could be converted.");
     const blob=writeZip(assembleSongsPack(items,Date.now())), a=document.createElement("a");
     a.href=URL.createObjectURL(blob); a.download="Retro_Music_Player_SONGS.mcaddon"; document.body.appendChild(a); a.click(); a.remove();
-    log.textContent+=`\nDone! Open Retro_Music_Player_SONGS.mcaddon with Minecraft, enable its packs next to the Retro Music Player packs, then fully restart your world.`+(failed.length?`\nSkipped slots: ${failed.join(", ")}`:"");
+    log.textContent+=`\nDone! Open Retro_Music_Player_SONGS.mcaddon with Minecraft, enable its packs next to the Retro Music Player packs, fully restart your world, then burn your songs from the player menu (ADD).`+(failed.length?`\nSkipped: ${failed.join(", ")}`:"");
   }catch(e){ log.textContent+="\nERROR: "+e.message; }
   btn.disabled=false;
   };
