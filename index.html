@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Song Pack Studio v2.5.3 | Retro Music Player</title>
+<title>Song Pack Studio v2.6.4 | Retro Music Player</title>
 <meta name="description" content="Create custom Minecraft Bedrock song packs for Retro Music Player. Import audio and synchronized lyrics privately in your browser.">
 <meta name="theme-color" content="#111827">
 <style>
@@ -25,9 +25,9 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 
 :root{--bg:#0b1020;--card:#151e30;--fg:#eef4ff;--mut:#a0aec4;--acc:#6c83ff;--bd:#334158;--ok:#65d9ad;--err:#ff8c93}html{color-scheme:dark}body{background:radial-gradient(ellipse at 50% -10%,#22335b 0%,#0b1020 52%);min-height:100vh;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}main{max-width:900px;padding:54px 20px 36px}h1{font-size:clamp(2.3rem,7vw,4.3rem);letter-spacing:-.055em;line-height:1.08;margin:10px 0 16px}h2{font-size:1.12rem;margin:0 0 2px;letter-spacing:-.02em}.accent{color:#9badff}.eyebrow{color:#b8c6ff;font-size:.72rem;font-weight:800;letter-spacing:.19em}p.sub{font-size:1.04rem;max-width:680px;line-height:1.7;margin-bottom:28px}.card{border:1px solid #34415b;background:linear-gradient(145deg,rgba(27,39,61,.97),rgba(17,26,44,.98));box-shadow:0 16px 45px #0002;border-radius:18px;padding:24px;margin:20px 0}.section-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}.step{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#273965;color:#bfcaff;font-weight:800;flex-shrink:0}#drop{border:2px dashed #56688c;border-radius:15px;padding:34px 20px;transition:background .15s,border-color .15s;display:flex;flex-direction:column;align-items:center;gap:10px}#drop:hover,#drop:focus-visible{border-color:#a4b5ff;background:#243252;outline:none}#drop .tag{max-width:600px;line-height:1.7}.upload-icon{font-size:2rem;display:grid;place-items:center;width:66px;height:66px;border-radius:18px;background:#334776;color:#d9e2ff}button,label.btn{background:#25344f;border-color:#4a5d7b;color:#f4f7ff;transition:filter .15s,transform .15s}button:hover:not(:disabled),label.btn:hover{filter:brightness(1.2)}button:active:not(:disabled){transform:translateY(1px)}button:focus-visible,label.btn:focus-within{outline:3px solid #a2b4ff;outline-offset:3px}button.primary{background:linear-gradient(110deg,#6178f5,#8b69ed);border:0;padding:15px;font-size:1rem}.toolbar{display:flex;justify-content:flex-end;margin:-4px 0 10px}.row{gap:10px;padding:12px 0}.track-number{color:#a6b8d8;min-width:22px;font-size:.85rem;font-weight:700}.row input[type=text]{min-width:180px}.row .tag{overflow-wrap:anywhere}#log{margin-top:14px;max-height:230px;overflow:auto;line-height:1.7}progress{margin-top:18px;accent-color:#8e9dff}.preview-btn{min-width:80px}.input-note{font-size:.78rem;color:var(--mut)}.row .lyrics-label{width:fit-content}.row input[type=text]{max-width:100%}.drop-note{font-size:.9rem}#cancelBuild{background:#3a3046;border-color:#826081}footer{font-size:.78rem;color:#8394b1;text-align:center;padding:24px 0 0}.split-exports{margin-top:18px;padding-top:14px;border-top:1px solid var(--bd)}.download-link{display:block;border:1px solid #6277ad;background:#25344f;border-radius:10px;padding:10px 12px;margin-top:9px;color:#edf2ff;text-decoration:none;font-weight:650}.download-link:hover{background:#334a75}.download-link:focus-visible{outline:3px solid #a2b4ff;outline-offset:2px}ol{padding-left:24px}li{margin:10px 0}.tag{line-height:1.55}code{color:#bfcaff}#note:empty{display:none}[hidden]{display:none!important}@media(max-width:540px){main{padding:30px 14px}.card{padding:18px;border-radius:15px}.row input[type=text]{flex-basis:calc(100% - 42px)}.row .tag{flex:1}#drop{padding:25px 12px}}
 </style></head><body><main>
-<div class="eyebrow">RETRO MUSIC PLAYER v2.5.3 · COMPANION TOOL</div><h1>Song Pack <span class="accent">Studio</span></h1>
-<p class="sub">Import songs for <b>Retro Music Player v2.5.3</b>. Add audio, match timed lyrics, and export a Minecraft-ready Songs <code>.mcaddon</code>. Audio files are processed on your device.</p>
-<div class="card"><b>Compatible with Retro Music Player v2.5.3.</b> Install and enable the <b>base Behavior Pack and Resource Pack</b> first. This tool builds a separate <b>Songs Behavior Pack + Songs Resource Pack</b> that communicates with the base add-on. <span id="cfLink">Use the v2.5.3 base .mcaddon supplied alongside this HTML.</span><p class="tag" style="margin-bottom:0">Importing songs does not change the already-installed base add-on; Minecraft still needs the generated Songs packs enabled in your world.</p></div>
+<div class="eyebrow">RETRO MUSIC PLAYER v2.6.4 · COMPANION TOOL</div><h1>Song Pack <span class="accent">Studio</span></h1>
+<p class="sub">Import songs for <b>Retro Music Player v2.6.4</b>. Add audio, match timed lyrics, and export a Minecraft-ready Songs <code>.mcaddon</code>. Audio files are processed on your device.</p>
+<div class="card"><b>Compatible with Retro Music Player v2.6.4.</b> Install and enable the <b>base Behavior Pack and Resource Pack</b> first. This tool builds a separate <b>Songs Behavior Pack + Songs Resource Pack</b> that communicates with the base add-on. <span id="cfLink">Use the v2.6.4 base .mcaddon supplied alongside this HTML.</span><p class="tag" style="margin-bottom:0">Importing songs does not change the already-installed base add-on; Minecraft still needs the generated Songs packs enabled in your world.</p></div>
 
 <div class="card"><div class="section-head"><span class="step">01</span><div><h2>Import your music</h2><p class="tag">Audio files, lyrics, ZIP archives, or folders</p></div></div><div id="drop" role="button" aria-label="Choose audio and lyrics files" tabindex="0">
 <span class="upload-icon" aria-hidden="true">♫</span><b>Drop your songs here</b><br><span class="tag">or tap to choose files (mp3, wav, flac, m4a, ogg … + .lrc).<br>Vorbis OGG files work offline without conversion. Other supported formats use a converter loaded over the internet. Browser codec support varies.<br>Tip: name a lyrics file like its song (<code>My Song.mp3</code> + <code>My Song.lrc</code>) and they pair automatically.</span>
@@ -42,7 +42,7 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 </div>
 
 <div class="card" id="buildCard" hidden><div class="section-head"><span class="step">03</span><div><h2>Export your pack</h2><p class="tag">Creates a Minecraft-ready .mcaddon file</p></div></div>
-<button class="primary" id="build">Build songs for v2.5.3</button>
+<button class="primary" id="build">Build songs for v2.6.4</button>
 <button id="cancelBuild" type="button" hidden style="margin-top:10px;width:100%">Cancel build</button>
 <progress id="prog" value="0" max="1" hidden></progress>
 <div id="log" role="status" aria-live="polite"></div>
@@ -52,16 +52,16 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 </div>
 
 <div class="card"><h2>Install in Minecraft Bedrock</h2><ol>
-<li>Import the supplied <b>Retro Music Player v2.5.3</b> base <code>.mcaddon</code> into Minecraft, and enable its <b>Behavior Pack + Resource Pack</b>.</li>
-<li>Click <b>Build songs for v2.5.3</b> to export your custom Songs packs.</li>
+<li>Import the supplied <b>Retro Music Player v2.6.4</b> base <code>.mcaddon</code> into Minecraft, and enable its <b>Behavior Pack + Resource Pack</b>.</li>
+<li>Click <b>Build songs for v2.6.4</b> to export your custom Songs packs.</li>
 <li>Open the downloaded <code>.mcaddon</code> with Minecraft.</li>
 <li>In world settings, enable <b>all four packs</b>: Retro Music Player BP, Retro Music Player RP, Songs BP, and Songs RP. Then <b>fully exit and reopen the world</b>.</li></ol>
 <p class="tag">On iPad: save the exported file in Files, then choose <b>Share → Minecraft</b> if available. If importing the combined Songs file fails, use the separate .mcpack downloads shown after building. If your browser changes the extension to .zip, rename it to .mcaddon (or .mcpack) before importing.</p>
 <p class="tag">Every song you add shows up in the add-on's <b>ADD</b> list in the player menu, where you burn it onto a blank MiniDisc. No song is tied to a disc number and up to 1,000 songs can be imported into a songs pack; each MZ-RH1 holds up to 300 loaded tracks.<br>Songs are linked by <b>file name</b>: keep a file's name the same when you rebuild, and discs you already burned keep playing it (you can still change the title shown in game). To change songs later, rebuild and import the new Songs pack; select its latest version in world settings if Minecraft keeps the old version.<br>Only use music you own or have permission to use.</p></div>
 <script>
 const CF_URL=""; // Optional: verified public base add-on URL; never substitute an unverified link
-const BASE_VERSION="2.5.3";
-const STUDIO_VERSION="2.5.3";
+const BASE_VERSION="2.6.4";
+const STUDIO_VERSION="2.6.4";
 const PROTOCOL_VERSION=1;
 const ENC_URL="https://cdn.jsdelivr.net/npm/wasm-media-encoders@0.7.0/+esm";
 const MAX_ARCHIVE_BYTES=512*1024*1024;
@@ -70,8 +70,8 @@ const MAX_SONGS=1000;
 const MAX_AUDIO_BYTES=128*1024*1024;
 const MAX_LRC_CHARS=12000;
 const MAX_WIRE_BYTES=8*1024*1024;
-const MAX_SONG_CHUNKS=200; // receiver limit in base 2.5.3
-const MAX_EVENT_LENGTH=900; // receiver limit in base 2.5.3
+const MAX_SONG_CHUNKS=200; // receiver limit in base 2.6.4
+const MAX_EVENT_LENGTH=900; // receiver limit in base 2.6.4
 const MAX_ZIP_OUTPUT_BYTES=1900*1024*1024;
 const MAX_UNCOMPRESSED_BYTES=512*1024*1024;
 const AUDIO_EXT=/\.(mp3|wav|flac|m4a|aac|ogg|opus|wma|aiff?|mp4|webm)$/i;
@@ -422,7 +422,7 @@ function assembleSongsPack(items,stamp){
     dependencies:[{uuid:SP.rp,version:ver},{module_name:"@minecraft/server",version:"2.9.0"}]}));
   files.set(RP+"manifest.json",J({format_version:2,
     header:{name:"Retro Music Player Songs RP",description:"Audio for your Retro Music Player songs.",uuid:SP.rp,version:ver,min_engine_version:[1,26,40]},
-    metadata:{product_type:"addon"},capabilities:["pbr"],
+    metadata:{product_type:"addon"},
     modules:[{description:"Retro Music Player songs",type:"resources",uuid:SP.rpMod,version:ver}]}));
   const defs={}, songs={};
   for(const it of [...items].sort((a,b)=>a.id-b.id)){
@@ -447,7 +447,7 @@ function assembleSongsPack(items,stamp){
   return files;
 }
 
-/** Validate the generated song pack against the Retro Music Player v2.5.3 bridge contract.
+/** Validate the generated song pack against the Retro Music Player v2.6.4 bridge contract.
  *  This is a static compatibility check, not a substitute for in-game testing. */
 function verifySongsPack(files){
   const dec=new TextDecoder();
@@ -524,10 +524,10 @@ if(typeof document!=="undefined"){
     const verified=verifySongsPack(files);
     prepareSplitDownloads(files);
     const blob=writeZip(files), a=document.createElement("a");
-    const downloadUrl=URL.createObjectURL(blob); a.href=downloadUrl; a.download="Retro_Music_Player_SONGS_v2.5.3.mcaddon"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(downloadUrl),60000);
+    const downloadUrl=URL.createObjectURL(blob); a.href=downloadUrl; a.download="Retro_Music_Player_SONGS_v2.6.4.mcaddon"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(downloadUrl),60000);
     log.textContent+=`\nVerified ${verified.songs} song(s) against the v${BASE_VERSION} bridge contract.\nDone! Import the Songs .mcaddon into Minecraft, activate BOTH Songs packs alongside BOTH base v${BASE_VERSION} packs, and restart your world. In the player menu choose ADD to burn a disc.`+(failed.length?`\nSkipped: ${failed.join(", ")}`:"");
   }catch(e){ log.textContent+="\nERROR: "+e.message; }
   setBuilding(false);$("cancelBuild").disabled=false;$("cancelBuild").textContent="Cancel build";prog.hidden=true;
   };
 }
-</script><footer>Song Pack Studio v2.5.3 · Compatible with Retro Music Player v2.5.3 · Only import audio you have permission to use.</footer></main></body></html>
+</script><footer>Song Pack Studio v2.6.4 · Compatible with Retro Music Player v2.6.4 · Only import audio you have permission to use.</footer></main></body></html>
