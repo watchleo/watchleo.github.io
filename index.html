@@ -1,6 +1,6 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Song Pack Studio v2.8.16 | Retro Music Player</title>
+<title>Song Pack Studio v2.8.24 | Retro Music Player</title>
 <meta name="description" content="Create custom Minecraft Bedrock song packs for Retro Music Player. Import audio and synchronized lyrics privately in your browser.">
 <meta name="theme-color" content="#111827">
 <style>
@@ -22,22 +22,17 @@ button:disabled{opacity:.5;cursor:default}
 .small{padding:4px 8px}#log{white-space:pre-wrap;font-size:.9rem;color:var(--mut)}
 progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 
-:root{--bg:#0b1020;--card:#151e30;--fg:#eef4ff;--mut:#a0aec4;--acc:#6c83ff;--bd:#334158;--ok:#65d9ad;--err:#ff8c93}html{color-scheme:dark}body{background:radial-gradient(ellipse at 50% -10%,#22335b 0%,#0b1020 52%);min-height:100vh;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}main{max-width:900px;padding:54px 20px 36px}h1{font-size:clamp(2.3rem,7vw,4.3rem);letter-spacing:-.055em;line-height:1.08;margin:10px 0 16px}h2{font-size:1.12rem;margin:0 0 2px;letter-spacing:-.02em}.accent{color:#9badff}.eyebrow{color:#b8c6ff;font-size:.72rem;font-weight:800;letter-spacing:.19em}p.sub{font-size:1.04rem;max-width:680px;line-height:1.7;margin-bottom:28px}.card{border:1px solid #34415b;background:linear-gradient(145deg,rgba(27,39,61,.97),rgba(17,26,44,.98));box-shadow:0 16px 45px #0002;border-radius:18px;padding:24px;margin:20px 0}.section-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}.step{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#273965;color:#bfcaff;font-weight:800;flex-shrink:0}#drop{position:relative;overflow:hidden;border:2px dashed #56688c;border-radius:15px;padding:34px 20px;transition:background .15s,border-color .15s;display:flex;flex-direction:column;align-items:center;gap:10px}#drop:hover,#drop:focus-within{border-color:#a4b5ff;background:#243252;outline:none}#drop .tag{max-width:600px;line-height:1.7}.upload-icon{font-size:2rem;display:grid;place-items:center;width:66px;height:66px;border-radius:18px;background:#334776;color:#d9e2ff}.file-overlay{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;z-index:2;font-size:100px}.lrc-wrap{position:relative;display:inline-flex;overflow:hidden}.lrc-wrap input[type=file]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;z-index:2}button,label.btn{background:#25344f;border-color:#4a5d7b;color:#f4f7ff;transition:filter .15s,transform .15s}button:hover:not(:disabled),label.btn:hover{filter:brightness(1.2)}button:active:not(:disabled){transform:translateY(1px)}button:focus-visible,label.btn:focus-within{outline:3px solid #a2b4ff;outline-offset:3px}button.primary{background:linear-gradient(110deg,#6178f5,#8b69ed);border:0;padding:15px;font-size:1rem}.toolbar{display:flex;justify-content:flex-end;margin:-4px 0 10px}.row{gap:10px;padding:12px 0}.track-number{color:#a6b8d8;min-width:22px;font-size:.85rem;font-weight:700}.row input[type=text]{min-width:180px}.row .tag{overflow-wrap:anywhere}#log{margin-top:14px;max-height:230px;overflow:auto;line-height:1.7}progress{margin-top:18px;accent-color:#8e9dff}.preview-btn{min-width:80px}.input-note{font-size:.78rem;color:var(--mut)}.row .lyrics-label{width:fit-content}.row input[type=text]{max-width:100%}.drop-note{font-size:.9rem}#cancelBuild{background:#3a3046;border-color:#826081}footer{font-size:.78rem;color:#8394b1;text-align:center;padding:24px 0 0}.split-exports{margin-top:18px;padding-top:14px;border-top:1px solid var(--bd)}.download-link{display:block;border:1px solid #6277ad;background:#25344f;border-radius:10px;padding:10px 12px;margin-top:9px;color:#edf2ff;text-decoration:none;font-weight:650}.download-link:hover{background:#334a75}.download-link:focus-visible{outline:3px solid #a2b4ff;outline-offset:2px}ol{padding-left:24px}li{margin:10px 0}.tag{line-height:1.55}code{color:#bfcaff}#note:empty{display:none}[hidden]{display:none!important}@media(max-width:540px){main{padding:30px 14px}.card{padding:18px;border-radius:15px}.row input[type=text]{flex-basis:calc(100% - 42px)}.row .tag{flex:1}#drop{padding:25px 12px}}
+:root{--bg:#0b1020;--card:#151e30;--fg:#eef4ff;--mut:#a0aec4;--acc:#6c83ff;--bd:#334158;--ok:#65d9ad;--err:#ff8c93}html{color-scheme:dark}body{background:radial-gradient(ellipse at 50% -10%,#22335b 0%,#0b1020 52%);min-height:100vh;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}main{max-width:900px;padding:54px 20px 36px}h1{font-size:clamp(2.3rem,7vw,4.3rem);letter-spacing:-.055em;line-height:1.08;margin:10px 0 16px}h2{font-size:1.12rem;margin:0 0 2px;letter-spacing:-.02em}.accent{color:#9badff}.eyebrow{color:#b8c6ff;font-size:.72rem;font-weight:800;letter-spacing:.19em}p.sub{font-size:1.04rem;max-width:680px;line-height:1.7;margin-bottom:28px}.card{border:1px solid #34415b;background:linear-gradient(145deg,rgba(27,39,61,.97),rgba(17,26,44,.98));box-shadow:0 16px 45px #0002;border-radius:18px;padding:24px;margin:20px 0}.section-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}.step{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#273965;color:#bfcaff;font-weight:800;flex-shrink:0}#drop{border:2px dashed #56688c;border-radius:15px;padding:34px 20px;transition:background .15s,border-color .15s;display:flex;flex-direction:column;align-items:center;gap:10px}#drop:hover,#drop:focus-visible{border-color:#a4b5ff;background:#243252;outline:none}#drop .tag{max-width:600px;line-height:1.7}.upload-icon{font-size:2rem;display:grid;place-items:center;width:66px;height:66px;border-radius:18px;background:#334776;color:#d9e2ff}button,label.btn{background:#25344f;border-color:#4a5d7b;color:#f4f7ff;transition:filter .15s,transform .15s}button:hover:not(:disabled),label.btn:hover{filter:brightness(1.2)}button:active:not(:disabled){transform:translateY(1px)}button:focus-visible,label.btn:focus-within{outline:3px solid #a2b4ff;outline-offset:3px}button.primary{background:linear-gradient(110deg,#6178f5,#8b69ed);border:0;padding:15px;font-size:1rem}.toolbar{display:flex;justify-content:flex-end;margin:-4px 0 10px}.row{gap:10px;padding:12px 0}.track-number{color:#a6b8d8;min-width:22px;font-size:.85rem;font-weight:700}.row input[type=text]{min-width:180px}.row .tag{overflow-wrap:anywhere}#log{margin-top:14px;max-height:230px;overflow:auto;line-height:1.7}progress{margin-top:18px;accent-color:#8e9dff}.preview-btn{min-width:80px}.input-note{font-size:.78rem;color:var(--mut)}.row .lyrics-label{width:fit-content}.row input[type=text]{max-width:100%}.drop-note{font-size:.9rem}#cancelBuild{background:#3a3046;border-color:#826081}footer{font-size:.78rem;color:#8394b1;text-align:center;padding:24px 0 0}.split-exports{margin-top:18px;padding-top:14px;border-top:1px solid var(--bd)}.download-link{display:block;border:1px solid #6277ad;background:#25344f;border-radius:10px;padding:10px 12px;margin-top:9px;color:#edf2ff;text-decoration:none;font-weight:650}.download-link:hover{background:#334a75}.download-link:focus-visible{outline:3px solid #a2b4ff;outline-offset:2px}ol{padding-left:24px}li{margin:10px 0}.tag{line-height:1.55}code{color:#bfcaff}#note:empty{display:none}[hidden]{display:none!important}@media(max-width:540px){main{padding:30px 14px}.card{padding:18px;border-radius:15px}.row input[type=text]{flex-basis:calc(100% - 42px)}.row .tag{flex:1}#drop{padding:25px 12px}}
 </style></head><body><main>
-<div class="eyebrow">RETRO MUSIC PLAYER v2.8.16 · COMPANION TOOL</div><h1>Song Pack <span class="accent">Studio</span></h1>
-<p class="sub">Import songs for <b>Retro Music Player v2.8.16</b>. Add audio, match timed lyrics, and export a Minecraft-ready Songs <code>.mcaddon</code>. Audio files are processed on your device.</p>
-<div class="card"><b>Compatible with Retro Music Player v2.8.16.</b> Install and enable the <b>base Behavior Pack and Resource Pack</b> first. This tool builds a separate <b>Songs Behavior Pack + Songs Resource Pack</b> that communicates with the base add-on. <span id="cfLink">Use the v2.8.16 base .mcaddon supplied alongside this HTML.</span><p class="tag" style="margin-bottom:0">Importing songs does not change the already-installed base add-on; Minecraft still needs the generated Songs packs enabled in your world.</p></div>
+<div class="eyebrow">RETRO MUSIC PLAYER v2.8.24 · COMPANION TOOL</div><h1>Song Pack <span class="accent">Studio</span></h1>
+<p class="sub">Import songs for <b>Retro Music Player v2.8.24</b>. Add audio, match timed lyrics, and export a Minecraft-ready Songs <code>.mcaddon</code>. Audio files are processed on your device.</p>
+<div class="card"><b>Compatible with Retro Music Player v2.8.24.</b> Install and enable the <b>base Behavior Pack and Resource Pack</b> first. This tool builds a separate <b>Songs Behavior Pack + Songs Resource Pack</b> that communicates with the base add-on. <span id="cfLink">Use the v2.8.24 base .mcaddon supplied alongside this HTML.</span><p class="tag" style="margin-bottom:0">Importing songs does not change the already-installed base add-on; Minecraft still needs the generated Songs packs enabled in your world.</p></div>
 
-<div class="card"><div class="section-head"><span class="step">01</span><div><h2>Import your music</h2><p class="tag">Audio files, lyrics, ZIP archives, or folders</p></div></div>
-<div id="drop">
+<div class="card"><div class="section-head"><span class="step">01</span><div><h2>Import your music</h2><p class="tag">Audio files, lyrics, ZIP archives, or folders</p></div></div><div id="drop" role="button" aria-label="Choose audio and lyrics files" tabindex="0">
 <span class="upload-icon" aria-hidden="true">♫</span><b>Drop your songs here</b><br><span class="tag">or tap to choose files (mp3, wav, flac, m4a, ogg … + .lrc / .elrc).<br>Vorbis OGG files work offline without conversion. Other supported formats use a converter loaded over the internet. Browser codec support varies.<br>Tip: name a lyrics file like its song (<code>My Song.mp3</code> + <code>My Song.lrc</code>) and they pair automatically.</span>
-<input id="file" class="file-overlay" type="file" multiple="" aria-label="Choose audio and lyrics files">
-</div>
-<div style="margin:12px 0 0;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-<label class="btn" style="position:relative;overflow:hidden;display:inline-block">Choose files<input id="fileBtn" type="file" multiple="" style="position:absolute;inset:0;opacity:0;cursor:pointer"></label>
-<button id="pickFolder" type="button">Choose a folder</button>
-</div>
-<input id="folder" type="file" webkitdirectory="" multiple="" hidden="">
+<input id="file" type="file" accept="audio/*,.ogg,.opus,.flac,.m4a,.wma,.aiff,.zip,.lrc,.elrc" multiple="" hidden="">
+<input id="folder" type="file" webkitdirectory="" multiple="" hidden=""></div>
+<p style="margin:10px 0 0;text-align:center"><button id="pickFolder" type="button">Choose a folder</button></p>
 <p class="tag err" id="note"></p></div>
 
 <div class="card" id="listCard" hidden=""><div class="section-head"><span class="step">02</span><div><h2>Review your tracks</h2><p class="tag">Edit display names or attach lyrics before exporting</p></div></div><div class="toolbar"><button id="clearAll" type="button">Clear all tracks</button></div>
@@ -46,7 +41,7 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 </div>
 
 <div class="card" id="buildCard" hidden=""><div class="section-head"><span class="step">03</span><div><h2>Export your pack</h2><p class="tag">Creates a Minecraft-ready .mcaddon file</p></div></div>
-<button class="primary" id="build">Build songs for v2.8.16</button>
+<button class="primary" id="build">Build songs for v2.8.24</button>
 <button id="cancelBuild" type="button" hidden="" style="margin-top:10px;width:100%">Cancel build</button>
 <progress id="prog" value="0" max="1" hidden=""></progress>
 <div id="log" role="status" aria-live="polite"></div>
@@ -56,16 +51,16 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 </div>
 
 <div class="card"><h2>Install in Minecraft Bedrock</h2><ol>
-<li>Import the supplied <b>Retro Music Player v2.8.16</b> base <code>.mcaddon</code> into Minecraft, and enable its <b>Behavior Pack + Resource Pack</b>.</li>
-<li>Click <b>Build songs for v2.8.16</b> to export your custom Songs packs.</li>
+<li>Import the supplied <b>Retro Music Player v2.8.24</b> base <code>.mcaddon</code> into Minecraft, and enable its <b>Behavior Pack + Resource Pack</b>.</li>
+<li>Click <b>Build songs for v2.8.24</b> to export your custom Songs packs.</li>
 <li>Open the downloaded <code>.mcaddon</code> with Minecraft.</li>
 <li>In world settings, enable <b>all four packs</b>: Retro Music Player BP, Retro Music Player RP, Songs BP, and Songs RP. Then <b>fully exit and reopen the world</b>.</li></ol>
 <p class="tag">On iPad: save the exported file in Files, then choose <b>Share → Minecraft</b> if available. If importing the combined Songs file fails, use the separate .mcpack downloads shown after building. If your browser changes the extension to .zip, rename it to .mcaddon (or .mcpack) before importing.</p>
 <p class="tag">Every song you add shows up in the <b>recording deck’s song list</b>, where you record it onto a blank MiniDisc. No song is tied to a disc number and up to 1,000 songs can be imported into a songs pack; each MZ-RH1 holds up to 300 loaded tracks.<br>Songs are linked by <b>file name</b>: keep a file's name the same when you rebuild, and discs you already burned keep playing it (you can still change the title shown in game). To change songs later, rebuild and import the new Songs pack; select its latest version in world settings if Minecraft keeps the old version.<br>Only use music you own or have permission to use.</p></div>
 <script>
 const CF_URL=""; // Optional: verified public base add-on URL; never substitute an unverified link
-const BASE_VERSION="2.8.16";
-const STUDIO_VERSION="2.8.16";
+const BASE_VERSION="2.8.24";
+const STUDIO_VERSION="2.8.24";
 const PROTOCOL_VERSION=1;
 const ENC_URL="https://cdn.jsdelivr.net/npm/wasm-media-encoders@0.7.0/+esm";
 const MAX_ARCHIVE_BYTES=512*1024*1024;
@@ -74,8 +69,8 @@ const MAX_SONGS=1000;
 const MAX_AUDIO_BYTES=128*1024*1024;
 const MAX_LRC_CHARS=12000;
 const MAX_WIRE_BYTES=8*1024*1024;
-const MAX_SONG_CHUNKS=200; // receiver limit in base 2.8.16
-const MAX_EVENT_LENGTH=900; // receiver limit in base 2.8.16
+const MAX_SONG_CHUNKS=200; // receiver limit in base 2.8.24
+const MAX_EVENT_LENGTH=900; // receiver limit in base 2.8.24
 const MAX_ZIP_OUTPUT_BYTES=1900*1024*1024;
 const MAX_UNCOMPRESSED_BYTES=512*1024*1024;
 const AUDIO_EXT=/\.(mp3|wav|flac|m4a|aac|ogg|opus|wma|aiff?|mp4|webm)$/i;
@@ -85,44 +80,19 @@ let building=false, cancelRequested=false, preview=null;
 let lastExportStamp=0, splitDownloadUrls=[];
 function clearSplitDownloads(){for(const url of splitDownloadUrls)URL.revokeObjectURL(url);splitDownloadUrls=[];$("splitExports").hidden=true;}
 function stopPreview(){if(preview){preview.audio.pause();URL.revokeObjectURL(preview.url);preview=null;}}
-function setBuilding(on){
-  building=on;
-  $("build").disabled=on;
-  $("pickFolder").disabled=on;
-  $("clearAll").disabled=on;
-  $("file").disabled=on;
-  $("fileBtn").disabled=on;
-  $("cancelBuild").hidden=!on;
-}
+function setBuilding(on){building=on;$("build").disabled=on;$("pickFolder").disabled=on;$("clearAll").disabled=on;$("cancelBuild").hidden=!on;}
 function titleSafe(v){return String(v||"").replace(/§./g,"").replace(/[\u0000-\u001f\u007f-\u009f\uE000-\uF8FF]/g," ").replace(/\s+/g," ").trim().slice(0,100);}
 function canceled(){if(cancelRequested)throw new Error("Build canceled. No pack was exported.");}
 
 const norm=s=>s.toLowerCase().replace(/[^a-z0-9\u00c0-\uffff]+/g,"");
 const stem=n=>n.replace(/\.[^.]+$/,"");
-const stripNoise=s=>stem(s)
-  .replace(/\[[^\]]*\]|\([^)]*\)/g," ")
-  .replace(/\b(?:official\s*(?:music\s*)?(?:video|audio|lyric(?:s)?)|lyrics?|audio|hd|hq|4k|1080p|720p|320kbps|flac|mp3|wav|remaster(?:ed)?|explicit|clean|ver(?:sion)?)\b/gi," ")
-  .replace(/\s+/g," ").trim();
-const titleOnly=s=>{
-  const c=stripNoise(s);
-  const parts=c.split(/\s+-\s+/);
-  return parts.length>1?parts.slice(1).join(" - ").trim():c;
-};
-const tokens=s=>new Set(stripNoise(s).toLowerCase().split(/[^a-z0-9\u00c0-\uffff]+/).filter(w=>w.length>1));
-const simScore=(a,b)=>{
-  const ta=tokens(a),tb=tokens(b);
-  if(!ta.size||!tb.size)return 0;
-  let hit=0;for(const w of ta)if(tb.has(w))hit++;
-  return (2*hit)/(ta.size+tb.size);
-};
-const leadNum=n=>{const m=stem(n).match(/^\s*0*(\d{1,3})\s*[-_.)\s]/);return m?parseInt(m[1],10):null;};
 const lastNum=n=>{const m=stem(n).match(/(\d+)(?!.*\d)/);return m?parseInt(m[1],10):null;};
 const cleanTitle=n=>stem(n).replace(/^\s*\d{1,3}\s*[-_.)]\s*/,"").replace(/_+/g," ").trim()||stem(n);
 
 /* ---------- file intake ---------- */
 const isLrc=n=>/\.(?:e?lrc)$/i.test(n);
 const isAudio=f=>AUDIO_EXT.test(f.name)||(f.type||"").startsWith("audio/");
-const junk=p=>/(^|\/)((__MACOSX)|\.[^/]*)(\/|$)/.test(p);
+const junk=p=>/(^|\/)(__MACOSX|\.[^/]*)(\/|$)/.test(p);
 async function inflateRaw(u8,maxBytes){
   if(typeof DecompressionStream==="undefined")throw new Error("ZIP decompression is not supported by this browser");
   const reader=new Blob([u8]).stream().pipeThrough(new DecompressionStream("deflate-raw")).getReader();
@@ -178,53 +148,6 @@ async function walk(entry){
   for(;;){ const b=await new Promise((res,rej)=>rd.readEntries(res,rej)); if(!b.length)break; all.push(...b); }
   return (await Promise.all(all.map(walk))).flat();
 }
-function pairLyrics(){
-  const used=new Set(songs.map(s=>s.lrc).filter(Boolean));
-  const pair=(test)=>{ for(const s of songs){ if(s.lrc)continue; const m=lrcs.find(l=>!used.has(l.file)&&test(s,l)); if(m){s.lrc=m.file;used.add(m.file);} } };
-  // 1. Exact normalized stem
-  pair((s,l)=>norm(stem(l.file.name))===norm(stem(s.file.name)));
-  // 1b. Embedded LRC [ti:] and [ar:] metadata tags
-  pair((s,l)=>{
-    if(!l.ti)return false;
-    const nt=norm(l.ti),na=norm(l.ar),ns=norm(stripNoise(s.file.name)),nst=norm(titleOnly(s.file.name));
-    return (nt.length>2&&(nt===nst||nt===ns||(na.length>1&&norm(l.ar+" "+l.ti)===ns)))||(nt.length>=4&&ns.includes(nt));
-  });
-  // 2. Cleaned title without track numbers
-  pair((s,l)=>norm(cleanTitle(l.file.name))===norm(cleanTitle(s.file.name)));
-  // 3. Stripped noise tags like [Official Audio], (Lyrics), (Remastered), etc.
-  pair((s,l)=>{const a=norm(stripNoise(s.file.name)),b=norm(stripNoise(l.file.name));return a.length>2&&a===b;});
-  // 4. Song title after "Artist - Title" separator (when one file includes artist and the other doesn't)
-  pair((s,l)=>{
-    const sa=norm(titleOnly(s.file.name)),la=norm(titleOnly(l.file.name));
-    const sf=norm(stripNoise(s.file.name)),lf=norm(stripNoise(l.file.name));
-    return sa.length>2&&la.length>2&&(sa===la||sa===lf||sf===la);
-  });
-  // 5. Substring containment for longer titles (e.g. "01 - Song Name" vs "Song Name (Synced)")
-  pair((s,l)=>{
-    const a=norm(stripNoise(cleanTitle(s.file.name))),b=norm(stripNoise(cleanTitle(l.file.name)));
-    return a.length>=6&&b.length>=6&&(a.includes(b)||b.includes(a));
-  });
-  // 6. Fuzzy token overlap (Dice coefficient >= 0.72)
-  for(const s of songs){
-    if(s.lrc)continue;
-    let best=null,bestScore=0.72;
-    for(const l of lrcs){
-      if(used.has(l.file))continue;
-      const sc=Math.max(simScore(s.file.name,l.file.name),simScore(titleOnly(s.file.name),titleOnly(l.file.name)));
-      if(sc>=bestScore){bestScore=sc;best=l;}
-    }
-    if(best){s.lrc=best.file;used.add(best.file);}
-  }
-  // 7. Unique leading track number (e.g. "01. Track.mp3" + "01 Lyrics.lrc")
-  pair((s,l)=>{
-    const sn=leadNum(s.file.name),ln=leadNum(l.file.name);
-    return sn!==null&&ln===sn&&songs.filter(x=>leadNum(x.file.name)===sn).length===1&&lrcs.filter(x=>leadNum(x.file.name)===sn).length===1;
-  });
-  // 8. Unique trailing number fallback
-  pair((s,l)=>s.num!==null && l.num===s.num &&
-    songs.filter(x=>x.num===s.num).length===1 &&
-    lrcs.filter(x=>x.num===s.num).length===1);
-}
 async function addFiles(fl){
   if(building){$("note").textContent="Finish or cancel the build before adding more files.";return;}
   const note=$("note"); note.textContent=""; const skipped=[], flat=[];
@@ -237,18 +160,8 @@ async function addFiles(fl){
     } else flat.push(f);
   }
   const fresh=[];
-  let addedLrcCount=0;
   for(const f of flat){
-    if(isLrc(f.name)){
-      let ti="",ar="";
-      try{
-        const head=await f.slice(0,800).text();
-        ti=(head.match(/\[ti:([^\]]+)\]/i)||[])[1]?.trim()||"";
-        ar=(head.match(/\[ar:([^\]]+)\]/i)||[])[1]?.trim()||"";
-      }catch{}
-      lrcs.push({file:f,num:lastNum(f.name),ti,ar});
-      addedLrcCount++;
-    }
+    if(isLrc(f.name)) lrcs.push({file:f,num:lastNum(f.name)});
     else if(isAudio(f)&&f.size<=MAX_AUDIO_BYTES){
       const key=norm(stem(f.name));
       if(songs.some(s=>norm(stem(s.file.name))===key)||fresh.some(s=>norm(stem(s.file.name))===key))
@@ -260,11 +173,19 @@ async function addFiles(fl){
   const space=Math.max(0,MAX_SONGS-songs.length);
   if(fresh.length>space)skipped.push(`${fresh.length-space} track(s) over the ${MAX_SONGS}-song limit`);
   songs.push(...fresh.slice(0,space));
-  pairLyrics();
+  // pair lyrics: same name -> same name minus leading track number -> same last number
+  const used=new Set(songs.map(s=>s.lrc).filter(Boolean));
+  const pair=(test)=>{ for(const s of songs){ if(s.lrc)continue; const m=lrcs.find(l=>!used.has(l.file)&&test(s,l)); if(m){s.lrc=m.file;used.add(m.file);} } };
+  pair((s,l)=>norm(stem(l.file.name))===norm(stem(s.file.name)));
+  pair((s,l)=>norm(cleanTitle(l.file.name))===norm(cleanTitle(s.file.name)));
+  // Number-only matching is safe only when the number occurs exactly once
+  // on each side; otherwise lyrics can silently attach to the wrong song.
+  pair((s,l)=>s.num!==null && l.num===s.num &&
+    songs.filter(x=>x.num===s.num).length===1 &&
+    lrcs.filter(x=>x.num===s.num).length===1);
   for(const f of flat)if(isAudio(f)&&f.size>MAX_AUDIO_BYTES)skipped.push(f.name+" (audio over 128 MB)");
   if(skipped.length) note.textContent="Skipped: "+skipped.join(", ");
-  else if(!fresh.length&&addedLrcCount>0&&!songs.length) note.textContent=`Added ${addedLrcCount} lyrics file(s). Now add matching audio files to pair them.`;
-  else if(!fresh.length&&flat.length&&!addedLrcCount) note.textContent="No audio or lyrics files found in what you added.";
+  else if(!fresh.length&&flat.length&&!flat.some(f=>isLrc(f.name))) note.textContent="No audio files found in what you added.";
   render();
 }
 function render(){
@@ -274,20 +195,12 @@ function render(){
     const r=document.createElement("div"); r.className="row";
     r.innerHTML=`<span class="track-number">${i+1}</span><input type="text" maxlength="100" aria-label="Track ${i+1} display title" title="Title shown in game">
       <span class="tag ${s.lrc?"ok":""}">${s.lrc?"♪ lyrics: "+esc(s.lrc.name):"no lyrics"}</span>
-      <span class="lrc-wrap"><button class="small lyrics-label" type="button">Lyrics</button><input type="file"></span>
+      <label class="btn small lyrics-label">Lyrics<input type="file" hidden></label>
       <button class="small preview-btn" type="button" data-a="preview" title="Preview this song locally">▶ Preview</button>
       <button class="small" type="button" data-a="rm" title="Remove track" aria-label="Remove track">✕</button>`;
     const inp=r.querySelector("input[type=text]"); inp.value=s.title; inp.oninput=()=>s.title=inp.value;
-    const lrcInp=r.querySelector("input[type=file]");
-    lrcInp.onchange=e=>{
-      const chosen=e.target.files[0];
-      if(chosen){
-        if(!isLrc(chosen.name)){$("note").textContent="Please choose a .lrc or .elrc file.";return;}
-        $("note").textContent="";
-        s.lrc=chosen;
-        render();
-      }
-    };
+    r.querySelector("input[type=file]").accept=".lrc,.elrc";
+     r.querySelector("input[type=file]").onchange=e=>{ if(e.target.files[0]){s.lrc=e.target.files[0];render();} };
     r.onclick=e=>{
       if(e.target.dataset?.a==="rm"&&!building){stopPreview();songs.splice(i,1);render();}
       if(e.target.dataset?.a==="preview"){
@@ -303,17 +216,17 @@ function render(){
   $("count").textContent=`${songs.length} song${songs.length===1?"":"s"}.`;
 }
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+$("drop").onclick=()=>{if(!building)$("file").click();};
+$("drop").onkeydown=e=>{if(!building&&(e.key==="Enter"||e.key===" ")){e.preventDefault();$("file").click();}};
 $("clearAll").onclick=()=>{if(building)return;if(!songs.length||confirm("Remove all imported tracks?")){stopPreview();songs=[];lrcs=[];render();$("note").textContent="";}};
 $("file").onchange=e=>{addFiles([...e.target.files]);e.target.value="";};
-$("fileBtn").onchange=e=>{addFiles([...e.target.files]);e.target.value="";};
 $("folder").onchange=e=>{addFiles([...e.target.files]);e.target.value="";};
 $("pickFolder").onclick=()=>{if(!building)$("folder").click();};
 ["dragover","dragenter"].forEach(ev=>$("drop").addEventListener(ev,e=>{e.preventDefault();$("drop").classList.add("over");}));
 ["dragleave","drop"].forEach(ev=>$("drop").addEventListener(ev,e=>{e.preventDefault();$("drop").classList.remove("over");}));
 $("drop").addEventListener("drop",e=>{
-  e.preventDefault();
   const ents=[...(e.dataTransfer.items||[])].map(i=>i.webkitGetAsEntry&&i.webkitGetAsEntry()).filter(Boolean);
-  const fl=[...e.dataTransfer.files];
+  const fl=[...e.dataTransfer.files];     // read synchronously, before any await
   (async()=>{ try{ await addFiles(ents.length?(await Promise.all(ents.map(walk))).flat():fl); }catch(err){ $("note").textContent="Couldn't read that: "+err.message; } })();
 });
 
@@ -343,6 +256,8 @@ function writeZip(files){            // files: Map name->Uint8Array
 /* ---------- audio -> ogg ---------- */
 let encFactory=null;
 async function getEncoder(){ if(!encFactory) encFactory=(await import(ENC_URL)).createOggEncoder; return encFactory(); }
+/** Return duration from standard single-stream Vorbis Ogg pages, if valid.
+ * No browser codec or network needed. This also verifies the page bounds. */
 function vorbisDuration(u8){
   if(u8.length<58)return null;
   const dv=new DataView(u8.buffer,u8.byteOffset,u8.byteLength);
@@ -363,7 +278,7 @@ function vorbisDuration(u8){
       sampleRate=dv.getUint32(dataAt+12,true);
       if(sampleRate<8000||sampleRate>192000)return null;
     }
-    if(pageSerial!==serial)return null;
+    if(pageSerial!==serial)return null; // chained/multiplexed Ogg needs transcoding
     const g=dv.getBigUint64(off+6,true);
     if(g!==0xffffffffffffffffn && g>granule)granule=g;
     off=dataAt+len;pages++;
@@ -376,6 +291,7 @@ async function toOgg(file){
   canceled();
   if(file.size>MAX_AUDIO_BYTES)throw new Error("Audio file is over 128 MB");
   const raw=new Uint8Array(await file.arrayBuffer());
+  // First try a lossless, offline copy of a correctly structured Vorbis OGG.
   const native=vorbisDuration(raw);
   if(native!==null)return {data:raw,secs:native,converted:false};
   const Context=window.AudioContext||window.webkitAudioContext;
@@ -425,9 +341,12 @@ async function readText(f){
   throw new Error("Unable to decode lyrics text");
 }
 
+/* Fixed pack ids: installing a newer build replaces the previous songs pack. */
 const SP={bp:"2d376e9c-3146-4796-a61d-9855a0bfd581",bpMod:"c31cefcf-f48b-4510-9098-130b04f372c7",
           rp:"7f063ba8-4b5c-4acf-88b5-209bf78a3804",rpMod:"5f091815-f221-4f4d-a950-f88833e67ef3"};
 
+/* Behavior-pack script of the songs pack: sends each song's title / length / lyrics
+   to the Retro Music Player add-on as script events (protocol: see songs_link.js there). */
 const SENDER_JS=`import { system, world } from "@minecraft/server";
 import { SONGS } from "./songs_data.js";
 
@@ -473,6 +392,8 @@ system.afterEvents.scriptEventReceive.subscribe((ev) => {
 system.runTimeout(sendAll, 60);
 `;
 
+/* Stable song id from the FILE NAME (not the editable title): 1000..8999999.
+   Ids below 1000 are reserved for songs that ship inside the add-on. */
 function songId(name){ let h=0x811c9dc5; const t=norm(stem(name))||name;
   for(const ch of t){ h^=ch.codePointAt(0); h=Math.imul(h,0x01000193)>>>0; } return 1000+(h%8999000); }
 function assignIds(list){
@@ -483,8 +404,12 @@ function assignIds(list){
   return list.map(s=>ids.get(norm(stem(s.file.name))||s.file.name));
 }
 
+/* Pure function (no DOM, no audio): build the songs pack files.
+   items: [{id,title,secs,data:Uint8Array,lyrics:string|null}]   stamp: Date.now()  ->  Map name->Uint8Array */
 function assembleSongsPack(items,stamp){
   const enc=new TextEncoder(), files=new Map();
+  // UTC day + two-second slot increases with each normal rebuild, unlike a
+  // content hash which may decrease and get interpreted as an older pack.
   const day=Math.floor(stamp/86400000);
   const twoSecondSlot=Math.floor((stamp%86400000)/2000);
   const ver=[1,day,twoSecondSlot];
@@ -521,6 +446,8 @@ function assembleSongsPack(items,stamp){
   return files;
 }
 
+/** Validate the generated song pack against the Retro Music Player v2.8.24 bridge contract.
+ *  This is a static compatibility check, not a substitute for in-game testing. */
 function verifySongsPack(files){
   const dec=new TextDecoder();
   const BP="Retro Music Player Songs BP/",RP="Retro Music Player Songs RP/";
@@ -589,17 +516,18 @@ if(typeof document!=="undefined"){
     }
     canceled();
     if(failed.length===use.length) throw new Error("No song could be converted.");
+    // Minecraft uses pack UUID + version to distinguish rebuilds. Do not
+    // accidentally reuse a version for two exports made in the same 2 seconds.
     const stamp=Math.max(Date.now(),lastExportStamp+2000);lastExportStamp=stamp;
     const files=assembleSongsPack(items,stamp);
     const verified=verifySongsPack(files);
     prepareSplitDownloads(files);
     const blob=writeZip(files), a=document.createElement("a");
-    const downloadUrl=URL.createObjectURL(blob); a.href=downloadUrl; a.download="Retro_Music_Player_SONGS_v2.8.16.mcaddon"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(downloadUrl),60000);
+    const downloadUrl=URL.createObjectURL(blob); a.href=downloadUrl; a.download="Retro_Music_Player_SONGS_v2.8.24.mcaddon"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(downloadUrl),60000);
     log.textContent+=`\nVerified ${verified.songs} song(s) against the v${BASE_VERSION} bridge contract.\nDone! Import the Songs .mcaddon into Minecraft, activate BOTH Songs packs alongside BOTH base v${BASE_VERSION} packs, and restart your world. Use a recording deck with a blank MiniDisc in your inventory to record a song.`+(failed.length?`\nSkipped: ${failed.join(", ")}`:"");
   }catch(e){ log.textContent+="\nERROR: "+e.message; }
   setBuilding(false);$("cancelBuild").disabled=false;$("cancelBuild").textContent="Cancel build";prog.hidden=true;
   };
 }
-</script><footer>Song Pack Studio v2.8.16 · Compatible with Retro Music Player v2.8.16 · Only import audio you have permission to use.</footer></main>
-
+</script><footer>Song Pack Studio v2.8.24 · Compatible with Retro Music Player v2.8.24 · Only import audio you have permission to use.</footer></main>
 </body></html>
