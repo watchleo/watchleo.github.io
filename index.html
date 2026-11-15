@@ -26,7 +26,7 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 </style></head><body><main>
 <div class="eyebrow">RETRO MUSIC PLAYER v2.8.24 · COMPANION TOOL</div><h1>Song Pack <span class="accent">Studio</span></h1>
 <p class="sub">Import songs for <b>Retro Music Player v2.8.24</b>. Add audio, match timed lyrics, and export a Minecraft-ready Songs <code>.mcaddon</code>. Audio files are processed on your device.</p>
-<div class="card"><b>Compatible with Retro Music Player v2.8.24.</b> Install and enable the <b>base Behavior Pack and Resource Pack</b> first. This tool builds a separate <b>Songs Behavior Pack + Songs Resource Pack</b> that communicates with the base add-on. <span id="cfLink">Use the v2.8.24 base .mcaddon supplied alongside this HTML.</span><p class="tag" style="margin-bottom:0">Importing songs does not change the already-installed base add-on; Minecraft still needs the generated Songs packs enabled in your world.</p></div>
+<div class="card"><b>Compatible with Retro Music Player v2.8.24.</b> Install and enable the <b>base Behavior Pack and Resource Pack</b> first. This tool builds a separate <b>Songs Behavior Pack + Songs Resource Pack</b> that communicates with the base add-on. <span>Get the matching v2.8.24 base add-on from <a href="https://www.curseforge.com/minecraft-bedrock/addons/retro-music-player" target="_blank" rel="noopener">CurseForge</a>; the base add-on is a separate download.</span><p class="tag" style="margin-bottom:0">Importing songs does not change the already-installed base add-on; Minecraft still needs the generated Songs packs enabled in your world.</p></div>
 
 <div class="card"><div class="section-head"><span class="step">01</span><div><h2>Import your music</h2><p class="tag">Audio files, lyrics, ZIP archives, or folders</p></div></div><div id="drop" role="button" aria-label="Choose audio and lyrics files" tabindex="0">
 <span class="upload-icon" aria-hidden="true">♫</span><b>Drop your songs here</b><br><span class="tag">or tap to choose files (mp3, wav, flac, m4a, ogg … + .lrc / .elrc).<br>Vorbis OGG files work offline without conversion. Other supported formats use a converter loaded over the internet. Browser codec support varies.<br>Tip: name a lyrics file like its song (<code>My Song.mp3</code> + <code>My Song.lrc</code>) and they pair automatically.</span>
@@ -51,14 +51,15 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 </div>
 
 <div class="card"><h2>Install in Minecraft Bedrock</h2><ol>
-<li>Import the supplied <b>Retro Music Player v2.8.24</b> base <code>.mcaddon</code> into Minecraft, and enable its <b>Behavior Pack + Resource Pack</b>.</li>
+<li>Download the matching <b>Retro Music Player v2.8.24</b> base <code>.mcaddon</code> from <a href="https://www.curseforge.com/minecraft-bedrock/addons/retro-music-player" target="_blank" rel="noopener noreferrer">CurseForge</a>, import it into Minecraft, and enable its <b>Behavior Pack + Resource Pack</b>.</li>
 <li>Click <b>Build songs for v2.8.24</b> to export your custom Songs packs.</li>
 <li>Open the downloaded <code>.mcaddon</code> with Minecraft.</li>
 <li>In world settings, enable <b>all four packs</b>: Retro Music Player BP, Retro Music Player RP, Songs BP, and Songs RP. Then <b>fully exit and reopen the world</b>.</li></ol>
 <p class="tag">On iPad: save the exported file in Files, then choose <b>Share → Minecraft</b> if available. If importing the combined Songs file fails, use the separate .mcpack downloads shown after building. If your browser changes the extension to .zip, rename it to .mcaddon (or .mcpack) before importing.</p>
 <p class="tag">Every song you add shows up in the <b>recording deck’s song list</b>, where you record it onto a blank MiniDisc. No song is tied to a disc number and up to 1,000 songs can be imported into a songs pack; each MZ-RH1 holds up to 300 loaded tracks.<br>Songs are linked by <b>file name</b>: keep a file's name the same when you rebuild, and discs you already burned keep playing it (you can still change the title shown in game). To change songs later, rebuild and import the new Songs pack; select its latest version in world settings if Minecraft keeps the old version.<br>Only use music you own or have permission to use.</p></div>
+<footer>© 2026 Finntoh · All rights reserved for original project materials. <a href="https://github.com/watchleo/watchleo.github.io/blob/main/LICENSE.txt" target="_blank" rel="noopener noreferrer">License</a> · <a href="https://github.com/watchleo/watchleo.github.io/blob/main/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer">Third-party notices</a></footer>
 <script>
-const CF_URL=""; // Optional: verified public base add-on URL; never substitute an unverified link
+const CF_URL="https://www.curseforge.com/minecraft-bedrock/addons/retro-music-player"; // Optional: verified public base add-on URL; never substitute an unverified link
 const BASE_VERSION="2.8.24";
 const STUDIO_VERSION="2.8.24";
 const PROTOCOL_VERSION=1;
@@ -530,4 +531,5 @@ if(typeof document!=="undefined"){
   };
 }
 </script><footer>Song Pack Studio v2.8.24 · Compatible with Retro Music Player v2.8.24 · Only import audio you have permission to use.</footer></main>
+
 </body></html>
