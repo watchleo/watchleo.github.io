@@ -23,7 +23,8 @@ Play your own music in Minecraft Bedrock on a retro **MZ-RH1 Hi-MD Player**. Imp
 - Both base packs (Behavior Pack and Resource Pack) enabled. Imported music also needs both generated **Songs packs** enabled in the same world.
 ## Install
 
-1. Back up your world. Obtain `RetroMusicPlayer_2.8.24.mcaddon` from an official release (the base add-on is not hosted in this repository), import it, then enable its Behavior Pack and Resource Pack together in world settings.
+
+1. Back up your world. Download [`RetroMusicPlayer_2.8.24.mcaddon`](https://www.curseforge.com/minecraft-bedrock/addons/retro-music-player) from the official CurseForge page, import it into Minecraft, then enable its Behavior Pack and Resource Pack together in world settings.
 2. Leave and reopen the world. Keep only one copy of each base pack active.
 ## Quick start
 1. **Craft** a blank MiniDisc, a MiniDisc Recording Deck and an MZ-RH1 player (recipes below). All items are also in the creative inventory: *Retro Music - Audio Gear* and *Retro Music - Wearable Audio* under Equipment, *Retro Music - MiniDiscs* under Items.
