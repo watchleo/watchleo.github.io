@@ -183,6 +183,12 @@ function pairLyrics(){
   const pair=(test)=>{ for(const s of songs){ if(s.lrc)continue; const m=lrcs.find(l=>!used.has(l.file)&&test(s,l)); if(m){s.lrc=m.file;used.add(m.file);} } };
   // 1. Exact normalized stem
   pair((s,l)=>norm(stem(l.file.name))===norm(stem(s.file.name)));
+  // 1b. Embedded LRC [ti:] and [ar:] metadata tags
+  pair((s,l)=>{
+    if(!l.ti)return false;
+    const nt=norm(l.ti),na=norm(l.ar),ns=norm(stripNoise(s.file.name)),nst=norm(titleOnly(s.file.name));
+    return (nt.length>2&&(nt===nst||nt===ns||(na.length>1&&norm(l.ar+" "+l.ti)===ns)))||(nt.length>=4&&ns.includes(nt));
+  });
   // 2. Cleaned title without track numbers
   pair((s,l)=>norm(cleanTitle(l.file.name))===norm(cleanTitle(s.file.name)));
   // 3. Stripped noise tags like [Official Audio], (Lyrics), (Remastered), etc.
@@ -233,7 +239,16 @@ async function addFiles(fl){
   const fresh=[];
   let addedLrcCount=0;
   for(const f of flat){
-    if(isLrc(f.name)){ lrcs.push({file:f,num:lastNum(f.name)}); addedLrcCount++; }
+    if(isLrc(f.name)){
+      let ti="",ar="";
+      try{
+        const head=await f.slice(0,800).text();
+        ti=(head.match(/\[ti:([^\]]+)\]/i)||[])[1]?.trim()||"";
+        ar=(head.match(/\[ar:([^\]]+)\]/i)||[])[1]?.trim()||"";
+      }catch{}
+      lrcs.push({file:f,num:lastNum(f.name),ti,ar});
+      addedLrcCount++;
+    }
     else if(isAudio(f)&&f.size<=MAX_AUDIO_BYTES){
       const key=norm(stem(f.name));
       if(songs.some(s=>norm(stem(s.file.name))===key)||fresh.some(s=>norm(stem(s.file.name))===key))
