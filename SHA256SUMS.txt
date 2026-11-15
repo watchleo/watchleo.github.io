@@ -1,0 +1,2 @@
+349eca3f425d51836619536f060c7ce0d7de81db849891b8ab24c38edb3b41f3  RetroMusicPlayer_2.8.24.mcaddon
+d6e51f7aa0b0fa46114e62fe0cd57f374c7ffc1bebacfdf1d4cbaf2c0350e4c9  SongPackStudio_2.8.24.html
