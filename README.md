@@ -9,7 +9,7 @@ Play your own music in Minecraft Bedrock on a retro **MZ-RH1 Hi-MD Player**. Imp
 - `SongPackStudio_2.8.24.html` — companion song importer (also online at https://watchleo.github.io).
 - [`SongPackStudio_README.md`](SongPackStudio_README.md) — importer guide.
 - [`RELEASE_NOTES.md`](RELEASE_NOTES.md) — feature overview for this release.
-- `CURSEFORGE_DESCRIPTION.html` — ready-to-paste project description (HTML source mode); [`CURSEFORGE_DESCRIPTION.md`](CURSEFORGE_DESCRIPTION.md) is the Markdown copy. Neither is automatically published.
+- [`CURSEFORGE_DESCRIPTION.html`](CURSEFORGE_DESCRIPTION.html) — ready-to-paste project description (HTML source mode); [`CURSEFORGE_DESCRIPTION.md`](CURSEFORGE_DESCRIPTION.md) is the Markdown copy. Neither is automatically published.
 - [`COMPATIBILITY.md`](COMPATIBILITY.md), [`VALIDATION.md`](VALIDATION.md) — supported targets, known limits and the checks that were run.
 - [`LYRICS_FORMAT.md`](LYRICS_FORMAT.md) — LRC / enhanced LRC examples and timing rules.
 - [`SUPPORT_TEMPLATE.txt`](SUPPORT_TEMPLATE.txt) — bug-report template.
