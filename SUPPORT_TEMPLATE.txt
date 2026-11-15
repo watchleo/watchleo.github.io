@@ -1,0 +1,14 @@
+Retro Music Player bug report
+Pack version: 2.8.24
+Minecraft version:
+Device / OS:
+UI scale / touch or mouse:
+Other active packs and order:
+Retro or standard menu mode:
+Steps to reproduce:
+Expected result:
+Actual result:
+Exact Minecraft chat/content-log error:
+Does it occur in a fresh test world with only this pack and its Songs packs?
+For audio problems: imported file format, approximate length, and whether both Songs packs are enabled.
+Attach screenshots/content-log excerpts. Do not attach copyrighted music without permission.
