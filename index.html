@@ -30,7 +30,7 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 
 <div class="card"><div class="section-head"><span class="step">01</span><div><h2>Import your music</h2><p class="tag">Audio files, lyrics, ZIP archives, or folders</p></div></div><div id="drop" role="button" aria-label="Choose audio and lyrics files" tabindex="0">
 <span class="upload-icon" aria-hidden="true">♫</span><b>Drop your songs here</b><br><span class="tag">or tap to choose files (mp3, wav, flac, m4a, ogg … + .lrc / .elrc).<br>Vorbis OGG files work offline without conversion. Other supported formats use a converter loaded over the internet. Browser codec support varies.<br>Tip: name a lyrics file like its song (<code>My Song.mp3</code> + <code>My Song.lrc</code>) and they pair automatically.</span>
-<input id="file" type="file" accept="audio/*,.ogg,.opus,.flac,.m4a,.wma,.aiff,.zip,.lrc,.elrc" multiple="" hidden="">
+<input id="file" type="file" multiple="" hidden="">
 <input id="folder" type="file" webkitdirectory="" multiple="" hidden=""></div>
 <p style="margin:10px 0 0;text-align:center"><button id="pickFolder" type="button">Choose a folder</button></p>
 <p class="tag err" id="note"></p></div>
@@ -92,7 +92,7 @@ const cleanTitle=n=>stem(n).replace(/^\s*\d{1,3}\s*[-_.)]\s*/,"").replace(/_+/g,
 /* ---------- file intake ---------- */
 const isLrc=n=>/\.(?:e?lrc)$/i.test(n);
 const isAudio=f=>AUDIO_EXT.test(f.name)||(f.type||"").startsWith("audio/");
-const junk=p=>/(^|\/)(__MACOSX|\.[^/]*)(\/|$)/.test(p);
+const junk=p=>/(^|\/)((__MACOSX)|\.[^/]*)(\/|$)/.test(p);
 async function inflateRaw(u8,maxBytes){
   if(typeof DecompressionStream==="undefined")throw new Error("ZIP decompression is not supported by this browser");
   const reader=new Blob([u8]).stream().pipeThrough(new DecompressionStream("deflate-raw")).getReader();
@@ -148,6 +148,15 @@ async function walk(entry){
   for(;;){ const b=await new Promise((res,rej)=>rd.readEntries(res,rej)); if(!b.length)break; all.push(...b); }
   return (await Promise.all(all.map(walk))).flat();
 }
+function pairLyrics(){
+  const used=new Set(songs.map(s=>s.lrc).filter(Boolean));
+  const pair=(test)=>{ for(const s of songs){ if(s.lrc)continue; const m=lrcs.find(l=>!used.has(l.file)&&test(s,l)); if(m){s.lrc=m.file;used.add(m.file);} } };
+  pair((s,l)=>norm(stem(l.file.name))===norm(stem(s.file.name)));
+  pair((s,l)=>norm(cleanTitle(l.file.name))===norm(cleanTitle(s.file.name)));
+  pair((s,l)=>s.num!==null && l.num===s.num &&
+    songs.filter(x=>x.num===s.num).length===1 &&
+    lrcs.filter(x=>x.num===s.num).length===1);
+}
 async function addFiles(fl){
   if(building){$("note").textContent="Finish or cancel the build before adding more files.";return;}
   const note=$("note"); note.textContent=""; const skipped=[], flat=[];
@@ -160,8 +169,9 @@ async function addFiles(fl){
     } else flat.push(f);
   }
   const fresh=[];
+  let addedLrcCount=0;
   for(const f of flat){
-    if(isLrc(f.name)) lrcs.push({file:f,num:lastNum(f.name)});
+    if(isLrc(f.name)){ lrcs.push({file:f,num:lastNum(f.name)}); addedLrcCount++; }
     else if(isAudio(f)&&f.size<=MAX_AUDIO_BYTES){
       const key=norm(stem(f.name));
       if(songs.some(s=>norm(stem(s.file.name))===key)||fresh.some(s=>norm(stem(s.file.name))===key))
@@ -173,19 +183,11 @@ async function addFiles(fl){
   const space=Math.max(0,MAX_SONGS-songs.length);
   if(fresh.length>space)skipped.push(`${fresh.length-space} track(s) over the ${MAX_SONGS}-song limit`);
   songs.push(...fresh.slice(0,space));
-  // pair lyrics: same name -> same name minus leading track number -> same last number
-  const used=new Set(songs.map(s=>s.lrc).filter(Boolean));
-  const pair=(test)=>{ for(const s of songs){ if(s.lrc)continue; const m=lrcs.find(l=>!used.has(l.file)&&test(s,l)); if(m){s.lrc=m.file;used.add(m.file);} } };
-  pair((s,l)=>norm(stem(l.file.name))===norm(stem(s.file.name)));
-  pair((s,l)=>norm(cleanTitle(l.file.name))===norm(cleanTitle(s.file.name)));
-  // Number-only matching is safe only when the number occurs exactly once
-  // on each side; otherwise lyrics can silently attach to the wrong song.
-  pair((s,l)=>s.num!==null && l.num===s.num &&
-    songs.filter(x=>x.num===s.num).length===1 &&
-    lrcs.filter(x=>x.num===s.num).length===1);
+  pairLyrics();
   for(const f of flat)if(isAudio(f)&&f.size>MAX_AUDIO_BYTES)skipped.push(f.name+" (audio over 128 MB)");
   if(skipped.length) note.textContent="Skipped: "+skipped.join(", ");
-  else if(!fresh.length&&flat.length&&!flat.some(f=>isLrc(f.name))) note.textContent="No audio files found in what you added.";
+  else if(!fresh.length&&addedLrcCount>0&&!songs.length) note.textContent=`Added ${addedLrcCount} lyrics file(s). Now add matching audio files to pair them.`;
+  else if(!fresh.length&&flat.length&&!addedLrcCount) note.textContent="No audio or lyrics files found in what you added.";
   render();
 }
 function render(){
@@ -195,12 +197,22 @@ function render(){
     const r=document.createElement("div"); r.className="row";
     r.innerHTML=`<span class="track-number">${i+1}</span><input type="text" maxlength="100" aria-label="Track ${i+1} display title" title="Title shown in game">
       <span class="tag ${s.lrc?"ok":""}">${s.lrc?"♪ lyrics: "+esc(s.lrc.name):"no lyrics"}</span>
-      <label class="btn small lyrics-label">Lyrics<input type="file" hidden></label>
+      <button class="small lyrics-label" type="button" data-a="lrc">Lyrics</button><input type="file" hidden>
       <button class="small preview-btn" type="button" data-a="preview" title="Preview this song locally">▶ Preview</button>
       <button class="small" type="button" data-a="rm" title="Remove track" aria-label="Remove track">✕</button>`;
     const inp=r.querySelector("input[type=text]"); inp.value=s.title; inp.oninput=()=>s.title=inp.value;
-    r.querySelector("input[type=file]").accept=".lrc,.elrc";
-     r.querySelector("input[type=file]").onchange=e=>{ if(e.target.files[0]){s.lrc=e.target.files[0];render();} };
+    const lrcBtn=r.querySelector('[data-a="lrc"]');
+    const lrcInp=r.querySelector("input[type=file]");
+    lrcBtn.onclick=()=>{if(!building)lrcInp.click();};
+    lrcInp.onchange=e=>{
+      const chosen=e.target.files[0];
+      if(chosen){
+        if(!isLrc(chosen.name)){$("note").textContent="Please choose a .lrc or .elrc file.";return;}
+        $("note").textContent="";
+        s.lrc=chosen;
+        render();
+      }
+    };
     r.onclick=e=>{
       if(e.target.dataset?.a==="rm"&&!building){stopPreview();songs.splice(i,1);render();}
       if(e.target.dataset?.a==="preview"){
@@ -530,4 +542,5 @@ if(typeof document!=="undefined"){
   };
 }
 </script><footer>Song Pack Studio v2.8.16 · Compatible with Retro Music Player v2.8.16 · Only import audio you have permission to use.</footer></main>
+
 </body></html>
