@@ -4,8 +4,8 @@ Companion importer for Retro Music Player 2.8.24. This HTML creates a separate S
 
 ## Quick start
 
-1. Install and enable both base Retro Music Player packs in Minecraft.
-2. Open Song Pack Studio at https://watchleo.github.io, or open the included `SongPackStudio_2.8.24.html`, in a browser that runs JavaScript. iPad Files/Quick Look may only preview the file; use the online version if controls do not respond.
+1. Obtain the matching v2.8.24 base add-on from an official release (the archive is not hosted in this repository), then install and enable both base Retro Music Player packs in Minecraft.
+2. Open Song Pack Studio at https://watchleo.github.io, or open a separately supplied `SongPackStudio_2.8.24.html` if included with your release package, in a browser that runs JavaScript. iPad Files/Quick Look may only preview the file; use the online version if controls do not respond.
 3. Add audio files, a folder, or a supported ZIP (mp3, wav, flac, m4a, aac, ogg, opus, wma, aiff, mp4 and webm are recognized; actual support depends on your browser). Optional `.lrc` or `.elrc` files should share their song's filename stem, such as `My Song.ogg` and `My Song.lrc`.
 4. Review titles and preview audio, then build the Songs `.mcaddon`. If the combined import fails, use the generated separate BP/RP download links.
 5. Import it into Minecraft, enable **Songs BP and Songs RP** alongside the two base packs, and fully exit and reopen the world. On iPad, save the exported file in Files, then choose Share → Minecraft. If your browser changes the extension to `.zip`, rename it to `.mcaddon` (or `.mcpack`) before importing.
@@ -31,8 +31,8 @@ Limits: 1,000 imported songs, 128 MiB per audio file, 12,000 lyric characters pe
 - Download/import fails: try the separate Songs BP/RP downloads or another browser.
 - Silent HTML preview: open https://watchleo.github.io in your browser instead of a static file preview.
 
-Only use audio/lyrics you have permission to use and redistribute. The importer does not grant music rights. See `LICENSE.txt` and `THIRD_PARTY_NOTICES.txt` for project and dependency notices.
+Only use audio/lyrics you have permission to use; redistribution requires the applicable rights. The importer does not grant music rights. See [LICENSE.txt](LICENSE.txt) (All Rights Reserved for original project materials) and [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt) for third-party terms.
 
 Validation covers script parsing and generated pack structure/protocol. Actual browser audio decoding, iPad downloads, and Minecraft playback require device testing.
 
-Enhanced LRC inline word timestamps are preserved. See LYRICS_FORMAT.md for format examples, offset convention and Config → Lyrics Style options.
+Enhanced LRC inline word timestamps are preserved. See [LYRICS_FORMAT.md](LYRICS_FORMAT.md) for format examples, offset convention and Config → Lyrics Style options.

@@ -4,17 +4,18 @@ Play your own music in Minecraft Bedrock on a retro **MZ-RH1 Hi-MD Player**. Imp
 **Release channel: full release.** This build passes the local static checks listed in [`VALIDATION.md`](VALIDATION.md). In-game testing is not claimed here. See [`COMPATIBILITY.md`](COMPATIBILITY.md) for scope and known shared-UI limits.
 
 **The add-on ships with no songs.** You provide the audio, and the importer turns it into a Songs add-on that you install alongside the base packs.
-## Files
-- `RetroMusicPlayer_2.8.24.mcaddon` — base add-on; open with Minecraft.
-- `SongPackStudio_2.8.24.html` — companion song importer (also online at https://watchleo.github.io).
+## Downloads and documentation
+
+**This repository hosts the Song Pack Studio website and documentation—not the base add-on download.** Open the [online Song Pack Studio](https://watchleo.github.io/) or view its [website source](index.html). The base add-on, `RetroMusicPlayer_2.8.24.mcaddon`, must be obtained separately from an official project release, such as the [creator's CurseForge project listings](https://www.curseforge.com/members/finntoh/projects). Make sure the add-on version matches **2.8.24**. A standalone `SongPackStudio_2.8.24.html` may be supplied with release downloads, but is not in this repository.
+
 - [`SongPackStudio_README.md`](SongPackStudio_README.md) — importer guide.
-- [`RELEASE_NOTES.md`](RELEASE_NOTES.md) — feature overview for this release.
-- [`COMPATIBILITY.md`](COMPATIBILITY.md), [`VALIDATION.md`](VALIDATION.md) — supported targets, known limits and the checks that were run.
-- [`LYRICS_FORMAT.md`](LYRICS_FORMAT.md) — LRC / enhanced LRC examples and timing rules.
+- [`COMPATIBILITY.md`](COMPATIBILITY.md) and [`VALIDATION.md`](VALIDATION.md) — supported targets, known limitations, and tests.
+- [`LYRICS_FORMAT.md`](LYRICS_FORMAT.md) — LRC / enhanced LRC guide.
 - [`SUPPORT_TEMPLATE.txt`](SUPPORT_TEMPLATE.txt) — bug-report template.
-- [`SHA256SUMS.txt`](SHA256SUMS.txt) — checksums for the add-on and importer.
-- [`LICENSE.txt`](LICENSE.txt) — Finntoh MIT license and rights exclusions.
-- [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt) — Mojang sample and importer dependency notices.
+- [`SHA256SUMS.txt`](SHA256SUMS.txt) — published checksums for separately distributed release archives; the archives are not hosted here.
+- [`LICENSE.txt`](LICENSE.txt) — **All Rights Reserved** terms for original project material.
+- [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt) — third-party code, sample assets, and licensing.
+
 ## Requirements
 
 - Minecraft **Bedrock** (Windows, Android, iOS/iPadOS). Java Edition is not supported.
@@ -22,7 +23,7 @@ Play your own music in Minecraft Bedrock on a retro **MZ-RH1 Hi-MD Player**. Imp
 - Both base packs (Behavior Pack and Resource Pack) enabled. Imported music also needs both generated **Songs packs** enabled in the same world.
 ## Install
 
-1. Back up your world, import `RetroMusicPlayer_2.8.24.mcaddon`, then enable its Behavior Pack and Resource Pack together in the world settings.
+1. Back up your world. Obtain `RetroMusicPlayer_2.8.24.mcaddon` from an official release (the base add-on is not hosted in this repository), import it, then enable its Behavior Pack and Resource Pack together in world settings.
 2. Leave and reopen the world. Keep only one copy of each base pack active.
 ## Quick start
 1. **Craft** a blank MiniDisc, a MiniDisc Recording Deck and an MZ-RH1 player (recipes below). All items are also in the creative inventory: *Retro Music - Audio Gear* and *Retro Music - Wearable Audio* under Equipment, *Retro Music - MiniDiscs* under Items.
@@ -51,7 +52,7 @@ Wearable audio gear (N = iron nugget, R = redstone):
 (`_` means an empty slot.)
 ## Import songs
 
-Open Song Pack Studio online at https://watchleo.github.io (or open the included `SongPackStudio_2.8.24.html`) in a JavaScript-capable browser, add audio, optionally pair `.lrc` lyrics with matching filenames, and build the Songs `.mcaddon`. On iPad, a Files/Quick Look preview may not run an HTML app; use the online version at https://watchleo.github.io if the controls do not run.
+Open [Song Pack Studio](https://watchleo.github.io/) online (or a separately supplied `SongPackStudio_2.8.24.html`, if it came with your release package) in a JavaScript-capable browser, add audio, optionally pair `.lrc` lyrics with matching filenames, and build the Songs `.mcaddon`. On iPad, a Files/Quick Look preview may not run an HTML app; use the online version at https://watchleo.github.io if the controls do not run.
 Enable **both Songs packs** alongside **both base packs**, then fully exit and reopen the world. Every imported song appears in the recording deck's song list; songs are not tied to a disc number.
 Already-valid Vorbis OGG can be copied without conversion or an internet connection. Other browser-decodable formats require the converter loaded from jsDelivr; codec support and memory limits vary by browser. Processing happens in the browser; the tool does not upload your audio to an application server. Internet access is still required to fetch the converter when needed.
 Songs are identified by normalized filenames. Keep filenames stable when rebuilding to retain existing disc links; display titles can change independently. Enable only the intended current Songs pack. Up to 1,000 songs can be imported; each player holds up to 300 loaded tracks. Songs are streamed rather than preloaded, but keeping each song under about 10 MB helps world loading and low-memory devices. Use the split BP/RP download links if your device has trouble importing the combined Songs file.
@@ -183,4 +184,4 @@ Open **Help** (main panel or Config) for the in-game cheat sheet, and verify on 
 See [`VALIDATION.md`](VALIDATION.md) for the checks run and [`COMPATIBILITY.md`](COMPATIBILITY.md) for supported targets.
 ## License and credits
 
-See [`LICENSE.txt`](LICENSE.txt) and [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt). Project-owned material is under Finntoh's MIT license. Mojang sample code/assets and third-party music, lyrics, marks, or fonts are not relicensed by that file. Do not redistribute music without permission. This is not an official Minecraft product.
+Copyright © 2026 Finntoh. **All rights reserved** for original project-owned materials, subject to the limited permissions in [`LICENSE.txt`](LICENSE.txt). Third-party libraries, Mojang sample assets, trademarks, and user-provided music or lyrics retain their own rights; see [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt). Do not redistribute music without permission. This is an unofficial fan project, not endorsed by Mojang or Microsoft.

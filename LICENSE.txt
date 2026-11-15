@@ -1,148 +1,81 @@
-Retro Music Player — LICENSE
-
+RETRO MUSIC PLAYER — LICENSE (ALL RIGHTS RESERVED)
 Copyright (c) 2026 Finntoh. All rights reserved.
 
-This license governs the viewing, use, copying, modification, and distribution of Retro Music Player and its associated project materials ("the Project").
+1. SCOPE AND OWNERSHIP
 
-By viewing, downloading, installing, accessing, or using any part of this Project, you agree to the terms outlined below.
+This license applies only to original Retro Music Player and Song Pack Studio
+materials owned by Finntoh, including original code, user interfaces, artwork,
+textures, documentation, branding, and original project assets. Third-party
+libraries, Minecraft/Mojang sample assets, trademarks, and user-supplied music
+or lyrics are not owned or relicensed by Finntoh. See THIRD_PARTY_NOTICES.txt.
 
-1. OWNERSHIP AND COPYRIGHT
+2. PERMISSIONS GRANTED
 
-Retro Music Player is an original creative and software project developed by Finntoh.
+Subject to the rights of third parties, you may:
+- View and study the publicly available project files.
+- Download, install, and use an officially distributed copy of the add-on in
+  Minecraft Bedrock worlds, Realms, or public community servers, without
+  selling access to the add-on itself.
+- Use the official Song Pack Studio tool to generate personal Songs packs from
+  audio and lyrics you have permission to use.
+- Make private, non-commercial modifications for your own use, without
+  distributing the modified materials.
+- Publish screenshots, videos, tutorials, reviews, or livestreams about the
+  add-on, including monetized creator videos, provided you credit "Finntoh"
+  and link to https://github.com/watchleo/watchleo.github.io or the official
+  CurseForge project.
+- Share independently generated song packs containing only material you own
+  or are authorized to distribute, provided they do not include the original
+  Retro Music Player add-on, source code, or proprietary assets. If promoted
+  as compatible with Retro Music Player, credit Finntoh and link to the
+  official project.
 
-Unless otherwise indicated in the THIRD-PARTY NOTICES section, all original project materials are the exclusive intellectual property of Finntoh. This includes, but is not limited to:
+These permissions are not a transfer of copyright. Standard GitHub viewing,
+forking, and pull-request functionality remains subject to GitHub's terms;
+a fork is not permission to distribute a competing packaged release.
 
-- Behavior Pack: Scripts, item definitions, functionality, logic, and related configurations.
-- Resource Pack: Textures, artwork, user interface (JSON UI) elements, visual designs, animations, and sound effects.
-- Music: Original compositions and audio content, including the Disc 1 track "Neon District".
-- Web Importer (Song Pack Studio): Source code, interface, functionality, and associated implementation.
-- Build System: Build scripts, automation, and project-specific tooling.
-- Branding: Project icon, original graphics, and visual identity.
-- Documentation: Written content, instructions, and other accompanying documentation.
+3. RESTRICTIONS
 
-All rights not expressly granted by this license are reserved by Finntoh. Third-party components, trademarks, and materials remain the property of their respective owners.
+Except where expressly permitted above, where law independently allows it,
+or where Finntoh grants prior written permission, you may not:
+- Reupload, mirror, sublicense, redistribute, repack, or sell the original
+  add-on, standalone importer, source code, artwork, or other project-owned
+  materials, whether modified or unmodified.
+- Publish modified versions, ports, or derivative releases based on
+  project-owned material.
+- Bundle project-owned materials in modpacks, paid services, other add-ons,
+  or commercial products.
+- Remove or misrepresent copyright notices, authorship, or attribution.
 
-2. PERMITTED USE AND MANDATORY ATTRIBUTION
+These restrictions apply only to materials and rights Finntoh actually owns;
+they do not override third-party licenses or applicable law.
 
-Subject to the attribution requirements below, the following activities are permitted without requesting additional permission from Finntoh:
+4. THIRD-PARTY AND USER CONTENT
 
-- Viewing and studying the source code on the official GitHub repository.
-- Forking the repository on GitHub solely for personal reference or submitting Pull Requests back to the official repository (subject to GitHub's Terms of Service and Section 3 below).
-- Downloading and installing Retro Music Player from official sources for personal use.
-- Using the addon in personal Minecraft Bedrock Edition worlds, Realms, and multiplayer servers (including public community servers, provided access to the addon itself is not sold).
-- Recording, streaming, photographing, or otherwise showcasing the addon in videos, screenshots, livestreams, reviews, and tutorials (including monetized content on platforms such as YouTube or Twitch).
-- Using the Web Importer to convert personally supplied audio into custom song packs compatible with the addon.
-- Linking directly to the official project page, repository, or official download locations.
+Minecraft, Mojang, and Microsoft names and assets belong to their respective
+owners. The Song Pack Studio audio encoder is separately licensed under its
+upstream terms; see THIRD_PARTY_NOTICES.txt. You are responsible for having
+permission to use and distribute imported audio, lyrics, and cover artwork.
+No rights to third-party music or Minecraft assets are granted here.
 
-Mandatory Attribution Requirement:
-Whenever you publicly showcase, stream, record, review, or feature Retro Music Player (or use it on a public server), you MUST clearly credit "Finntoh" as the creator and include a visible link to one of the official project pages:
-- CurseForge: https://www.curseforge.com/members/finntoh/projects
-- GitHub: https://github.com/watchleo
+5. NO WARRANTY
 
-These permissions do not transfer ownership of any project materials.
+This software and accompanying materials are provided "AS IS", without
+warranty of any kind, to the extent permitted by applicable law. Back up your
+Minecraft worlds before installing add-ons.
 
-3. STRICT RESTRICTIONS (NO MODIFICATION OR REDISTRIBUTION)
+6. PERMISSIONS AND INQUIRIES
 
-Without prior written permission from Finntoh, you may NOT:
+For distribution, commercial licensing, or other permissions not expressly
+granted here, contact the project owner through the official GitHub project:
+https://github.com/watchleo/watchleo.github.io
 
-Redistribution & Mirroring
-- Re-upload, mirror, host, or redistribute the addon, the Web Importer, or any of their components on third-party websites, repositories, Discord servers, launchers, or download platforms.
-- Include the addon or any of its components in modpacks, map packs, addon collections, compilations, or external projects.
-- Distribute modified or unmodified copies of the Project or packaged releases (`.mcaddon`, `.mcpack`, `.zip`, etc.) to others.
+7. NON-AFFILIATION
 
-Modification & Derivative Works
-- Modify the Project and publish, share, or distribute the modified version—whether as a packaged addon, a standalone website, or a public GitHub release/fork intended for distribution.
-- Extract, copy, adapt, or reuse the Project's original scripts, JSON UI layouts, textures, sounds, music, artwork, or source code in another project.
-- Create derivative projects, ports, or remakes based on the original materials.
+Retro Music Player is an unofficial fan-made project. It is not endorsed,
+sponsored, or approved by Mojang or Microsoft. References to Minecraft,
+MiniDisc, MZ-RH1, and other names do not imply ownership of or affiliation
+with their respective owners.
 
-Commercial Use
-- Sell the addon, Web Importer, or any of their components.
-- Charge money, subscriptions, paywalls, or fees for access to the Project (including behind paid server ranks or Patreon tiers).
-- Include the Project or its components in paid products, services, or commercial distributions.
-
-Attribution & Ownership Integrity
-- Remove, obscure, alter, or misrepresent copyright notices, credits, license files, or ownership information.
-- Claim authorship or ownership of any original project materials, or present the Project as your own work.
-
-These restrictions apply to all original project materials regardless of how they were obtained.
-
-4. PRIVATE MODIFICATIONS
-
-You may modify your own downloaded copy of Retro Music Player strictly for private, local, non-commercial use on your own device.
-
-However:
-- Private modifications must NEVER be published, uploaded, shared, or distributed to anyone else.
-- Original project materials must not be extracted and reused in other projects.
-
-5. WEB IMPORTER AND USER-GENERATED SONG PACKS
-
-The Web Importer allows users to convert their own audio files into custom song packs compatible with Retro Music Player.
-
-- Users retain full legal responsibility for the audio, music, lyrics, cover art, and other content they supply. Finntoh does not claim ownership of user-supplied content or grant rights to third-party copyrighted material.
-- Users may keep, install, and share their own self-created custom song packs (containing only audio/assets they own or have legal permission to distribute), provided those song packs do NOT include or bundle the core Retro Music Player addon, scripts, UI, or original assets.
-- If a user publicly shares a custom song pack made for Retro Music Player, they must credit Finntoh and link to the official Retro Music Player page for downloading the core addon.
-
-6. THIRD-PARTY COMPONENTS
-
-Certain third-party software and technologies are used by or referenced in Retro Music Player. These components are subject to their respective licenses and copyright notices. Their inclusion does not transfer ownership to Finntoh, nor does this license override the permissions granted by their respective licenses. See THIRD-PARTY NOTICES below for details.
-
-7. TERMINATION
-
-Any permissions granted under this license automatically terminate if you violate any of its terms. Upon termination, you must immediately cease all use of the Project materials and delete all copies under your control. Finntoh reserves the right to pursue all remedies available under applicable law (including DMCA takedown notices) in response to unauthorized use, modification, or distribution.
-
-8. NO WARRANTY
-
-Retro Music Player and its associated materials are provided "AS IS", without warranties or guarantees of any kind, whether express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, compatibility, reliability, and non-infringement.
-
-Finntoh does not guarantee that the addon or Web Importer will operate without errors, interruptions, compatibility issues, or data loss. To the maximum extent permitted by applicable law, Finntoh shall not be liable for any damages, losses, or claims arising from the use, inability to use, or distribution of the Project. Users are strongly encouraged to back up their Minecraft worlds before installing or updating addons.
-
-9. TRADEMARKS AND NON-AFFILIATION
-
-Retro Music Player is an unofficial, fan-made project.
-IT IS NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.
-
-Minecraft and related trademarks are the property of Mojang Synergies AB and Microsoft Corporation. "Walkman", "MiniDisc", "MZ-RH1", and "Winamp" are names, product designations, or trademarks belonging to their respective owners and are used solely for descriptive, referential, and stylistic purposes. No ownership of third-party trademarks is claimed, and no affiliation, sponsorship, approval, or endorsement is implied.
-
-10. PERMISSIONS AND CONTACT
-
-Any use not expressly permitted by this license requires prior written permission from Finntoh. For licensing inquiries, commercial permissions, modpack inclusion requests, or other authorization, contact:
-
-Finntoh
-Email: watchleo63@gmail.com
-CurseForge: https://www.curseforge.com/members/finntoh/projects
-GitHub: https://github.com/watchleo
-
-Permission granted for a specific use does not extend to other uses or projects.
-
-11. GENERAL PROVISIONS
-
-This license applies to the original materials of Retro Music Player, subject to the rights and licenses of third-party components. If any provision of this license is found to be unenforceable under applicable law, the remaining provisions shall continue to apply to the extent permitted by law. Failure to enforce any provision does not constitute a waiver of the right to enforce it in the future.
-
-================================================================================
-THIRD-PARTY NOTICES
-================================================================================
-
-wasm-media-encoders
-Copyright (c) 2020-2024 arseneyr
-Licensed under the MIT License.
-
-The Web Importer loads this library at runtime from the jsDelivr CDN to convert audio into Ogg Vorbis format. It is not bundled with or distributed as part of the addon files or standalone importer file. This library compiles the Xiph Ogg/Vorbis reference encoder to WebAssembly; applicable upstream copyright notices and licensing terms also apply.
-
-MIT License:
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
---------------------------------------------------------------------------------
-
-User-Supplied Content
-Songs, audio recordings, lyrics, artwork, and other content supplied through the Web Importer remain the property of their respective owners and are not covered by the Retro Music Player license. Users are responsible for obtaining any necessary permissions for the content they use.
-
---------------------------------------------------------------------------------
-
-Minecraft Bedrock Edition
-Retro Music Player uses standard Minecraft Bedrock Edition scripting, resource pack, and user interface mechanisms. No Minecraft game assets are claimed as original work by Finntoh. Minecraft and its associated technologies remain the property of their respective owners.
-
-Copyright (c) 2026 Finntoh. All rights reserved.
+Nothing in this file purports to withdraw rights already validly granted
+under earlier licenses for material to which those grants applied.

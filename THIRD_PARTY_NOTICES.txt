@@ -1,12 +1,55 @@
-Mojang Bedrock samples
-======================
+RETRO MUSIC PLAYER — THIRD-PARTY NOTICES
+
+Project-owned materials: Copyright (c) 2026 Finntoh. All rights reserved.
+These notices do not imply ownership of third-party materials.
+
+1. Mojang Bedrock sample assets
 Source: https://github.com/Mojang/bedrock-samples
-Used: six helmet inventory icons (leather converted to PNG).
+Use described in the project: six helmet inventory icons (leather
+reference converted to PNG).
+Mojang AB retains ownership of its materials. Minecraft assets and the
+sample repository are governed by applicable Minecraft terms, including:
+https://www.minecraft.net/en-us/eula
+The project license does not relicense Mojang materials.
 
-(c) Mojang AB. All rights reserved.
+2. Song Pack Studio audio encoder
+Component: wasm-media-encoders, version 0.7.0
+Source: https://github.com/arseneyr/wasm-media-encoders
+Loaded on demand from:
+https://cdn.jsdelivr.net/npm/wasm-media-encoders@0.7.0/+esm
+This converter is loaded at runtime from jsDelivr and is not distributed
+as part of the base add-on or the site's index.html file. The upstream
+MIT license applies to the library; applicable upstream codec-component
+terms may also apply. This MIT license does NOT apply to the original
+Retro Music Player or Song Pack Studio project-owned code.
 
-By downloading the files in this repository, you agree to the [Minecraft End User License Agreement](https://www.minecraft.net/en-us/eula) and that these files are subject to its terms.
+MIT License (upstream wasm-media-encoders; reproduced from previous project notices)
+Copyright (c) 2020-2024 arseneyr
 
-The Finntoh MIT license does not relicense Mojang material. Minecraft and its assets remain subject to their own terms.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Song Pack Studio loads wasm-media-encoders 0.7.0 from https://cdn.jsdelivr.net/npm/wasm-media-encoders@0.7.0/+esm when conversion is needed. That third-party dependency is not bundled and remains under its upstream license. Imported music and lyrics remain the responsibility/property of their rights holders.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
+
+3. User-supplied content
+Audio, lyrics, cover artwork, and generated song packs remain subject to
+the copyright and permissions of their respective owners. Finntoh does
+not claim ownership of music imported by users.
+
+4. Trademarks and non-affiliation
+Minecraft and related properties belong to Mojang/Microsoft. Product
+names such as MiniDisc and MZ-RH1 belong to their respective owners.
+Retro Music Player is not an official Minecraft product.
