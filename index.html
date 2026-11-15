@@ -99,6 +99,23 @@ function canceled(){if(cancelRequested)throw new Error("Build canceled. No pack 
 
 const norm=s=>s.toLowerCase().replace(/[^a-z0-9\u00c0-\uffff]+/g,"");
 const stem=n=>n.replace(/\.[^.]+$/,"");
+const stripNoise=s=>stem(s)
+  .replace(/\[[^\]]*\]|\([^)]*\)/g," ")
+  .replace(/\b(?:official\s*(?:music\s*)?(?:video|audio|lyric(?:s)?)|lyrics?|audio|hd|hq|4k|1080p|720p|320kbps|flac|mp3|wav|remaster(?:ed)?|explicit|clean|ver(?:sion)?)\b/gi," ")
+  .replace(/\s+/g," ").trim();
+const titleOnly=s=>{
+  const c=stripNoise(s);
+  const parts=c.split(/\s+-\s+/);
+  return parts.length>1?parts.slice(1).join(" - ").trim():c;
+};
+const tokens=s=>new Set(stripNoise(s).toLowerCase().split(/[^a-z0-9\u00c0-\uffff]+/).filter(w=>w.length>1));
+const simScore=(a,b)=>{
+  const ta=tokens(a),tb=tokens(b);
+  if(!ta.size||!tb.size)return 0;
+  let hit=0;for(const w of ta)if(tb.has(w))hit++;
+  return (2*hit)/(ta.size+tb.size);
+};
+const leadNum=n=>{const m=stem(n).match(/^\s*0*(\d{1,3})\s*[-_.)\s]/);return m?parseInt(m[1],10):null;};
 const lastNum=n=>{const m=stem(n).match(/(\d+)(?!.*\d)/);return m?parseInt(m[1],10):null;};
 const cleanTitle=n=>stem(n).replace(/^\s*\d{1,3}\s*[-_.)]\s*/,"").replace(/_+/g," ").trim()||stem(n);
 
@@ -164,8 +181,40 @@ async function walk(entry){
 function pairLyrics(){
   const used=new Set(songs.map(s=>s.lrc).filter(Boolean));
   const pair=(test)=>{ for(const s of songs){ if(s.lrc)continue; const m=lrcs.find(l=>!used.has(l.file)&&test(s,l)); if(m){s.lrc=m.file;used.add(m.file);} } };
+  // 1. Exact normalized stem
   pair((s,l)=>norm(stem(l.file.name))===norm(stem(s.file.name)));
+  // 2. Cleaned title without track numbers
   pair((s,l)=>norm(cleanTitle(l.file.name))===norm(cleanTitle(s.file.name)));
+  // 3. Stripped noise tags like [Official Audio], (Lyrics), (Remastered), etc.
+  pair((s,l)=>{const a=norm(stripNoise(s.file.name)),b=norm(stripNoise(l.file.name));return a.length>2&&a===b;});
+  // 4. Song title after "Artist - Title" separator (when one file includes artist and the other doesn't)
+  pair((s,l)=>{
+    const sa=norm(titleOnly(s.file.name)),la=norm(titleOnly(l.file.name));
+    const sf=norm(stripNoise(s.file.name)),lf=norm(stripNoise(l.file.name));
+    return sa.length>2&&la.length>2&&(sa===la||sa===lf||sf===la);
+  });
+  // 5. Substring containment for longer titles (e.g. "01 - Song Name" vs "Song Name (Synced)")
+  pair((s,l)=>{
+    const a=norm(stripNoise(cleanTitle(s.file.name))),b=norm(stripNoise(cleanTitle(l.file.name)));
+    return a.length>=6&&b.length>=6&&(a.includes(b)||b.includes(a));
+  });
+  // 6. Fuzzy token overlap (Dice coefficient >= 0.72)
+  for(const s of songs){
+    if(s.lrc)continue;
+    let best=null,bestScore=0.72;
+    for(const l of lrcs){
+      if(used.has(l.file))continue;
+      const sc=Math.max(simScore(s.file.name,l.file.name),simScore(titleOnly(s.file.name),titleOnly(l.file.name)));
+      if(sc>=bestScore){bestScore=sc;best=l;}
+    }
+    if(best){s.lrc=best.file;used.add(best.file);}
+  }
+  // 7. Unique leading track number (e.g. "01. Track.mp3" + "01 Lyrics.lrc")
+  pair((s,l)=>{
+    const sn=leadNum(s.file.name),ln=leadNum(l.file.name);
+    return sn!==null&&ln===sn&&songs.filter(x=>leadNum(x.file.name)===sn).length===1&&lrcs.filter(x=>leadNum(x.file.name)===sn).length===1;
+  });
+  // 8. Unique trailing number fallback
   pair((s,l)=>s.num!==null && l.num===s.num &&
     songs.filter(x=>x.num===s.num).length===1 &&
     lrcs.filter(x=>x.num===s.num).length===1);
