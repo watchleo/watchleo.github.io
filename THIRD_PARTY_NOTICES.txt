@@ -1,0 +1,12 @@
+Mojang Bedrock samples
+======================
+Source: https://github.com/Mojang/bedrock-samples
+Used: six helmet inventory icons (leather converted to PNG).
+
+(c) Mojang AB. All rights reserved.
+
+By downloading the files in this repository, you agree to the [Minecraft End User License Agreement](https://www.minecraft.net/en-us/eula) and that these files are subject to its terms.
+
+The Finntoh MIT license does not relicense Mojang material. Minecraft and its assets remain subject to their own terms.
+
+Song Pack Studio loads wasm-media-encoders 0.7.0 from https://cdn.jsdelivr.net/npm/wasm-media-encoders@0.7.0/+esm when conversion is needed. That third-party dependency is not bundled and remains under its upstream license. Imported music and lyrics remain the responsibility/property of their rights holders.
