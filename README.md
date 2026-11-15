@@ -12,10 +12,10 @@ Play your own music in Minecraft Bedrock on a retro **MZ-RH1 Hi-MD Player**. Imp
 - `CURSEFORGE_DESCRIPTION.html` — ready-to-paste project description (HTML source mode); [`CURSEFORGE_DESCRIPTION.md`](CURSEFORGE_DESCRIPTION.md) is the Markdown copy. Neither is automatically published.
 - [`COMPATIBILITY.md`](COMPATIBILITY.md), [`VALIDATION.md`](VALIDATION.md) — supported targets, known limits and the checks that were run.
 - [`LYRICS_FORMAT.md`](LYRICS_FORMAT.md) — LRC / enhanced LRC examples and timing rules.
-- `SUPPORT_TEMPLATE.txt` — bug-report template.
-- `SHA256SUMS.txt` — checksums for the add-on and importer.
-- `LICENSE.txt` — Finntoh MIT license and rights exclusions.
-- `THIRD_PARTY_NOTICES.txt` — Mojang sample and importer dependency notices.
+- [`SUPPORT_TEMPLATE.txt`](SUPPORT_TEMPLATE.txt) — bug-report template.
+- [`SHA256SUMS.txt`](SHA256SUMS.txt) — checksums for the add-on and importer.
+- [`LICENSE.txt`](LICENSE.txt) — Finntoh MIT license and rights exclusions.
+- [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt) — Mojang sample and importer dependency notices.
 ## Requirements
 
 - Minecraft **Bedrock** (Windows, Android, iOS/iPadOS). Java Edition is not supported.
@@ -184,4 +184,4 @@ Open **Help** (main panel or Config) for the in-game cheat sheet, and verify on 
 See [`VALIDATION.md`](VALIDATION.md) for the checks run and [`COMPATIBILITY.md`](COMPATIBILITY.md) for supported targets.
 ## License and credits
 
-See `LICENSE.txt` and `THIRD_PARTY_NOTICES.txt`. Project-owned material is under Finntoh's MIT license. Mojang sample code/assets and third-party music, lyrics, marks, or fonts are not relicensed by that file. Do not redistribute music without permission. This is not an official Minecraft product.
+See [`LICENSE.txt`](LICENSE.txt) and [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt). Project-owned material is under Finntoh's MIT license. Mojang sample code/assets and third-party music, lyrics, marks, or fonts are not relicensed by that file. Do not redistribute music without permission. This is not an official Minecraft product.
