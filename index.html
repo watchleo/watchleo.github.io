@@ -61,6 +61,9 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 <p class="tag">Every song you add shows up in the <b>recording deck’s song list</b>, where you record it onto a blank MiniDisc. No song is tied to a disc number and up to 1,000 songs can be imported into a songs pack; each MZ-RH1 holds up to 300 loaded tracks.<br>Songs are linked by <b>file name</b>: keep a file's name the same when you rebuild, and discs you already burned keep playing it (you can still change the title shown in game). To change songs later, rebuild and import the new Songs pack; select its latest version in world settings if Minecraft keeps the old version.<br>Only use music you own or have permission to use.</p></div>
 <footer>© 2026 Finntoh · All rights reserved for original project materials. <a href="https://github.com/watchleo/watchleo.github.io/blob/main/LICENSE.txt" target="_blank" rel="noopener noreferrer">License</a> · <a href="https://github.com/watchleo/watchleo.github.io/blob/main/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer">Third-party notices</a></footer>
 <script>
+(function(){const show=m=>{try{const n=document.getElementById("note");if(n)n.textContent="Page error: "+m;}catch(_){}};
+window.addEventListener("error",e=>show(e.message||"unknown error"));
+window.addEventListener("unhandledrejection",e=>show((e.reason&&e.reason.message)||String(e.reason)));})();
 const CF_URL="https://www.curseforge.com/minecraft-bedrock/addons/retro-music-player"; // Optional: verified public base add-on URL; never substitute an unverified link
 const BASE_VERSION="2.8.24";
 const STUDIO_VERSION="2.8.24";
@@ -308,7 +311,7 @@ async function toOgg(file){
   if(!Number.isFinite(secs)||secs<=0||secs>86400)throw new Error("Unsupported or excessively long audio duration");
   let enc;
   try{enc=await getEncoder();}
-  catch(e){throw new Error("Cannot load Vorbis encoder; connect to the internet or import Vorbis OGG files");}
+  catch(e){throw new Error("Cannot load the Vorbis converter from cdn.jsdelivr.net ("+((e&&e.message)||e)+"). Check your internet connection or ad/content blockers, or import Vorbis OGG files, which need no converter");}
   const ch=Math.min(2,audio.numberOfChannels),sr=audio.sampleRate;
   enc.configure({channels:ch,sampleRate:sr,vbrQuality:4});
   const chunks=[],N=audio.length,STEP=1<<15;
@@ -497,15 +500,15 @@ function prepareSplitDownloads(files){
 }
 
 if(typeof document!=="undefined"){
-  // The CurseForge link is already in the page markup, so this is optional.
-  // Guarded: a missing #cfLink must never stop the Build button from being wired up.
-  const cfEl=$("cfLink");
-  if(CF_URL&&cfEl){ const a=document.createElement("a"); a.href=CF_URL; a.target="_blank"; a.rel="noopener"; a.textContent="CurseForge"; cfEl.replaceWith(a); }
   $("cancelBuild").onclick=()=>{cancelRequested=true;$("cancelBuild").disabled=true;$("cancelBuild").textContent="Canceling…";};
+  try{ // The CurseForge link is already in the page markup, so this is optional and must never block the buttons.
+    const cfEl=$("cfLink");
+    if(CF_URL&&cfEl){ const a=document.createElement("a"); a.href=CF_URL; a.target="_blank"; a.rel="noopener"; a.textContent="CurseForge"; cfEl.replaceWith(a); }
+  }catch(_){}
   $("build").onclick=async()=>{
   if(building)return;
   stopPreview();cancelRequested=false;clearSplitDownloads();
-  const log=$("log"),prog=$("prog");setBuilding(true);prog.hidden=false;log.textContent="";
+  const log=$("log"),prog=$("prog");setBuilding(true);prog.hidden=false;log.textContent=`Preparing ${songs.length} song(s)…\n`;
   try{
     const use=[...songs], ids=assignIds(use);
     const items=[], failed=[]; prog.max=use.length; prog.value=0;
@@ -539,6 +542,6 @@ if(typeof document!=="undefined"){
   setBuilding(false);$("cancelBuild").disabled=false;$("cancelBuild").textContent="Cancel build";prog.hidden=true;
   };
 }
-</script><footer>Song Pack Studio v2.8.24 · Compatible with Retro Music Player v2.8.24 · Only import audio you have permission to use.</footer></main>
+</script><footer>Song Pack Studio v2.8.24 · Compatible with Retro Music Player v2.8.24 · Only import audio you have permission to use. · page build 2026-11-19b</footer></main>
 
 </body></html>
