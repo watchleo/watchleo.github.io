@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Song Pack Studio v2.8.24 | Retro Music Player</title>
@@ -45,6 +46,7 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 <button id="cancelBuild" type="button" hidden="" style="margin-top:10px;width:100%">Cancel build</button>
 <progress id="prog" value="0" max="1" hidden=""></progress>
 <div id="log" role="status" aria-live="polite"></div>
+<a id="downloadSongsMcaddon" class="download-link" download="Retro_Music_Player_SONGS_v2.8.24.mcaddon" hidden="">Download Songs add-on (.mcaddon)</a>
 <div id="splitExports" hidden="" class="split-exports"><p class="tag"><b>Alternative installation:</b> If your iPad or Minecraft will not import the combined Songs .mcaddon, download and import both individual packs below.</p>
 <a id="downloadSongsBP" class="download-link" download="Retro_Music_Player_SONGS_BP.mcpack">Download Songs Behavior Pack (.mcpack)</a>
 <a id="downloadSongsRP" class="download-link" download="Retro_Music_Player_SONGS_RP.mcpack">Download Songs Resource Pack (.mcpack)</a></div>
@@ -78,8 +80,8 @@ const AUDIO_EXT=/\.(mp3|wav|flac|m4a|aac|ogg|opus|wma|aiff?|mp4|webm)$/i;
 const $=id=>document.getElementById(id);
 let songs=[], lrcs=[];
 let building=false, cancelRequested=false, preview=null;
-let lastExportStamp=0, splitDownloadUrls=[];
-function clearSplitDownloads(){for(const url of splitDownloadUrls)URL.revokeObjectURL(url);splitDownloadUrls=[];$("splitExports").hidden=true;}
+let lastExportStamp=0, splitDownloadUrls=[], mainDownloadUrl=null;
+function clearSplitDownloads(){for(const url of splitDownloadUrls)URL.revokeObjectURL(url);splitDownloadUrls=[];if(mainDownloadUrl){URL.revokeObjectURL(mainDownloadUrl);mainDownloadUrl=null;}const m=$("downloadSongsMcaddon");if(m){m.hidden=true;m.removeAttribute("href");}$("splitExports").hidden=true;}
 function stopPreview(){if(preview){preview.audio.pause();URL.revokeObjectURL(preview.url);preview=null;}}
 function setBuilding(on){building=on;$("build").disabled=on;$("pickFolder").disabled=on;$("clearAll").disabled=on;$("cancelBuild").hidden=!on;}
 function titleSafe(v){return String(v||"").replace(/§./g,"").replace(/[\u0000-\u001f\u007f-\u009f\uE000-\uF8FF]/g," ").replace(/\s+/g," ").trim().slice(0,100);}
@@ -495,7 +497,10 @@ function prepareSplitDownloads(files){
 }
 
 if(typeof document!=="undefined"){
-  if(CF_URL){ const a=document.createElement("a"); a.href=CF_URL; a.target="_blank"; a.rel="noopener"; a.textContent="CurseForge"; $("cfLink").replaceWith(a); }
+  // The CurseForge link is already in the page markup, so this is optional.
+  // Guarded: a missing #cfLink must never stop the Build button from being wired up.
+  const cfEl=$("cfLink");
+  if(CF_URL&&cfEl){ const a=document.createElement("a"); a.href=CF_URL; a.target="_blank"; a.rel="noopener"; a.textContent="CurseForge"; cfEl.replaceWith(a); }
   $("cancelBuild").onclick=()=>{cancelRequested=true;$("cancelBuild").disabled=true;$("cancelBuild").textContent="Canceling…";};
   $("build").onclick=async()=>{
   if(building)return;
@@ -524,8 +529,12 @@ if(typeof document!=="undefined"){
     const verified=verifySongsPack(files);
     prepareSplitDownloads(files);
     const blob=writeZip(files), a=document.createElement("a");
-    const downloadUrl=URL.createObjectURL(blob); a.href=downloadUrl; a.download="Retro_Music_Player_SONGS_v2.8.24.mcaddon"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(downloadUrl),60000);
-    log.textContent+=`\nVerified ${verified.songs} song(s) against the v${BASE_VERSION} bridge contract.\nDone! Import the Songs .mcaddon into Minecraft, activate BOTH Songs packs alongside BOTH base v${BASE_VERSION} packs, and restart your world. Use a recording deck with a blank MiniDisc in your inventory to record a song.`+(failed.length?`\nSkipped: ${failed.join(", ")}`:"");
+    // Always show a real Download button (browsers often block downloads that are not
+    // started by a tap), and ALSO try the automatic download. The link stays valid until the next build.
+    const downloadUrl=URL.createObjectURL(blob); mainDownloadUrl=downloadUrl;
+    const dl=$("downloadSongsMcaddon"); dl.href=downloadUrl; dl.hidden=false;
+    a.href=downloadUrl; a.download="Retro_Music_Player_SONGS_v2.8.24.mcaddon"; document.body.appendChild(a); try{a.click();}catch(_){} a.remove();
+    log.textContent+=`\nVerified ${verified.songs} song(s) against the v${BASE_VERSION} bridge contract.\nDone! If no download started, tap the Download button below. Import the Songs .mcaddon into Minecraft, activate BOTH Songs packs alongside BOTH base v${BASE_VERSION} packs, and restart your world. Use a recording deck with a blank MiniDisc in your inventory to record a song.`+(failed.length?`\nSkipped: ${failed.join(", ")}`:"");
   }catch(e){ log.textContent+="\nERROR: "+e.message; }
   setBuilding(false);$("cancelBuild").disabled=false;$("cancelBuild").textContent="Cancel build";prog.hidden=true;
   };
