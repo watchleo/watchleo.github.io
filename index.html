@@ -31,7 +31,7 @@ progress{width:100%;height:14px}details{margin-top:8px;color:var(--mut)}
 
 <div class="card"><div class="section-head"><span class="step">01</span><div><h2>Import your music</h2><p class="tag">Audio files, lyrics, ZIP archives, or folders</p></div></div><div id="drop" role="button" aria-label="Choose audio and lyrics files" tabindex="0">
 <span class="upload-icon" aria-hidden="true">♫</span><b>Drop your songs here</b><br><span class="tag">or tap to choose files (mp3, wav, flac, m4a, ogg … + .lrc / .elrc).<br>Vorbis OGG files work offline without conversion. Other supported formats use a converter loaded over the internet. Browser codec support varies.<br>Tip: name a lyrics file like its song (<code>My Song.mp3</code> + <code>My Song.lrc</code>) and they pair automatically.</span>
-<input id="file" type="file" accept="audio/*,.ogg,.opus,.flac,.m4a,.wma,.aiff,.zip,.lrc,.elrc" multiple="" hidden="">
+<input id="file" type="file" multiple hidden>
 <input id="folder" type="file" webkitdirectory="" multiple="" hidden=""></div>
 <p style="margin:10px 0 0;text-align:center"><button id="pickFolder" type="button">Choose a folder</button></p>
 <p class="tag err" id="note"></p></div>
@@ -205,8 +205,18 @@ function render(){
       <button class="small preview-btn" type="button" data-a="preview" title="Preview this song locally">▶ Preview</button>
       <button class="small" type="button" data-a="rm" title="Remove track" aria-label="Remove track">✕</button>`;
     const inp=r.querySelector("input[type=text]"); inp.value=s.title; inp.oninput=()=>s.title=inp.value;
-    r.querySelector("input[type=file]").accept=".lrc,.elrc";
-     r.querySelector("input[type=file]").onchange=e=>{ if(e.target.files[0]){s.lrc=e.target.files[0];render();} };
+    // No accept filter: .lrc/.elrc have no registered MIME type, so mobile pickers grey them out.
+    r.querySelector("input[type=file]").onchange=e=>{
+      const f=e.target.files[0];
+      if(!f)return;
+      if(!isLrc(f.name)){
+        $("note").textContent="Please choose a .lrc or .elrc lyrics file.";
+        e.target.value="";
+        return;
+      }
+      s.lrc=f;
+      render();
+    };
     r.onclick=e=>{
       if(e.target.dataset?.a==="rm"&&!building){stopPreview();songs.splice(i,1);render();}
       if(e.target.dataset?.a==="preview"){
